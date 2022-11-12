@@ -8,7 +8,7 @@ import { AuthService } from './services/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'KCALFrontend';
+  title = 'Salus-Healthy Lifestyle';
   user = new User();
 
   constructor(private authService: AuthService){}
