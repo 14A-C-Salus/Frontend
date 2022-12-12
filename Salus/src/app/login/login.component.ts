@@ -29,6 +29,10 @@ export class LoginComponent implements OnInit {
 
   submit(): void{
     this.http.post('https://localhost:7138/api/Auth/login',this.form.getRawValue(), {responseType: 'text'})
-    .subscribe(res => this.router.navigate(['/']));
+    .subscribe(res => {
+      localStorage.setItem('authToken', res)
+      this.router.navigate(['/'])
+      
+      })  
+    }
   }
-}
