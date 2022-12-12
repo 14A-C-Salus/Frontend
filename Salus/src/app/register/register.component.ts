@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
+  message = '';
   form:FormGroup;
 
   constructor(
@@ -31,8 +32,14 @@ export class RegisterComponent implements OnInit {
   }
 
   submit(): void {
-    this.http.post("https://localhost:7138/api/Auth/register",this.form.getRawValue(), {responseType: 'text'})
-    .subscribe(res => this.router.navigate(['/Login']))
+    this.http.put("https://localhost:7138/api/Auth/register",this.form.getRawValue(), {responseType: 'text'})
+    .subscribe({
+      next: res => {
+        this.message = 'Succesfull sign up'
+      },
+      error: err => {
+      }
+    })
   }
 }
 
