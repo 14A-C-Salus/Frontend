@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  message = '';
   form:FormGroup;
 
   constructor(
@@ -28,11 +28,15 @@ export class LoginComponent implements OnInit {
   }
 
   submit(): void{
-    this.http.post('https://localhost:7138/api/Auth/login',this.form.getRawValue(), {responseType: 'text'})
-    .subscribe(res => {
-      localStorage.setItem('authToken', res)
-      this.router.navigate(['/'])
-      
-      })  
+    this.http.post('https://localhost:7138/api/Auth/login',this.form.getRawValue(), {responseType: 'text'},)
+    .subscribe({
+      next: res => {
+        localStorage.setItem('authToken', res)
+        this.router.navigate(['/'])
+      },
+      error: err => {
+        this.message ='Sikertelen bejelentkezés'
+      }
+    })  
     }
   }

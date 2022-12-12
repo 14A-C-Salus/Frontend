@@ -9,7 +9,6 @@ import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule , ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { AuthorizeComponent } from './authorize/authorize.component'
 
 @NgModule({
   declarations: [
@@ -18,7 +17,6 @@ import { AuthorizeComponent } from './authorize/authorize.component'
     LoginComponent,
     HomeComponent,
     RegisterComponent,
-    AuthorizeComponent
   ],
   imports: [
     BrowserModule,
