@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/'])
       },
       error: err => {
-        this.message ='Sikertelen bejelentkezés'
+        this.message =`Sikertelen bejelentkezés ${err.error}`
       }
     })  
     }
