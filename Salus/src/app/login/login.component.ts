@@ -28,14 +28,13 @@ export class LoginComponent implements OnInit {
   }
 
   submit(): void{
-    this.http.post('https://localhost:7138/api/Auth/login',this.form.getRawValue(), {responseType: 'text'},)
+    this.http.post('https://localhost:7138/api/Auth/login',{withCredentilas: true},this.form.getRawValue(),)
     .subscribe({
       next: res => {
-        localStorage.setItem('authToken', res)
         this.router.navigate(['/'])
       },
       error: err => {
-        this.message =`Sikertelen bejelentkezés ${err.error}`
+        this.message =`Sikertelen bejelentkezés`
       }
     })  
     }
