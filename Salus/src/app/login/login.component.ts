@@ -1,7 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,33 +8,42 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  message = '';
-  form:FormGroup;
+  loginForm: FormGroup;
+  errorMessageLogin: string;
+  errorMessageVerify: string;
 
   constructor(
-    private formBuilder:FormBuilder,
-    private http:HttpClient,
-    private router: Router,
+    private formBuilder: FormBuilder,
+    private authService: AuthService
     ) {
 
     }
 
-  ngOnInit(): void {
-    this.form = this.formBuilder.group({
-      email: '',
-      password: ''
-    });
-  }
+    ngOnInit() {
+      this.loginForm = this.formBuilder.group({
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', Validators.required]
+      });
+    }
 
-  submit(): void{
-    this.http.post('https://localhost:7138/api/Auth/login',{withCredentilas: true},this.form.getRawValue(),)
-    .subscribe({
-      next: res => {
-        this.router.navigate(['/'])
-      },
-      error: err => {
-        this.message =`Sikertelen bejelentkezés`
-      }
-    })  
+
+    onSubmit() {
+      const email = this.loginForm.value.email;
+      const password = this.loginForm.value.password;
+      this.authService.login(email, password).subscribe({
+        next: res => {
+          this.authService.verifyAccount().subscribe({
+            next: res => {
+
+            },
+            error: err => {
+              this.errorMessageVerify = 'Account not verified'
+            }
+          });
+        },
+        error: err =>{
+          this.errorMessageLogin = 'Invalid email or password'
+        }
+      })
     }
   }
