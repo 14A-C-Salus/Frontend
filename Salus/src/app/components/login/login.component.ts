@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserLogin } from 'src/app/models/user.login';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -8,28 +9,22 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  user = {
-    email: '',
-    password: '',
-  };
+  
   errorMessageLogin = '';
   errorMessageVerify = '';
+  userLogin = new UserLogin()
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  login(): void {
-    if (this.user.email && this.user.password) {
-      this.authService.login(this.user.email, this.user.password).subscribe({
-        next: (result: { token: string }) => {
-          this.authService.token = result.token;
+  login(userLogin: UserLogin): void {
+    if (userLogin.email && userLogin.password) {
+      this.authService.login(userLogin).subscribe({
+        next: ( token: string ) => {
+          localStorage.setItem('authToken', token)
           this.router.navigate(['/']);
         },
         error: (error) => {
-          if (error.error === 'ENotVerified') {
-            this.errorMessageVerify = 'Email not verified';
-          } else {
-            console.log('An unknown error occurred');
-          }
+          console.log(error)
         },
       });
     }

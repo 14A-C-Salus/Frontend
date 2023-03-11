@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { environment } from 'src/environments/environment';
+import { UserRegister } from 'src/app/models/user.register';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -10,8 +10,9 @@ import { environment } from 'src/environments/environment';
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
+  userRegister = new UserRegister()
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {}
+  constructor(private fb: FormBuilder,private authService:AuthService) {}
 
   ngOnInit() {
     this.registerForm = this.fb.group(
@@ -41,17 +42,15 @@ export class RegisterComponent implements OnInit {
     );
   }
 
-  onSubmit(): void {
-    this.http
-      .put(
-        `${environment.APIUrl}/Auth/register`,
-        this.registerForm.getRawValue(),
-        { responseType: 'text' }
-      )
+  register(userRegister: UserRegister): void {
+     this.authService.register(userRegister)
       .subscribe({
         next: (res) => {
           alert('Succesfull Sign-up');
         },
+        error: (err) => {
+            alert('This email is already registered');
+        }
       });
   }
 

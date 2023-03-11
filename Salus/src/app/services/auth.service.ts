@@ -1,19 +1,18 @@
 // auth.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs/operators';
-import jwt_decode from 'jwt-decode';
+
 import { Observable } from 'rxjs/internal/Observable';
 import { environment } from 'src/environments/environment';
+import { UserRegister } from '../models/user.register';
+import { UserLogin } from '../models/user.login';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'https://localhost:7138/api/Auth';
   
     constructor(private http: HttpClient) { }
-  
 
     _token = '';
 
@@ -24,22 +23,24 @@ export class AuthService {
     set token(value: string) {
       this._token = value;
       if (value) {      
-        localStorage.setItem("jwt", value);
+        localStorage.setItem("authToken", value);
       }
       else {
-        localStorage.removeItem("jwt");
+        localStorage.removeItem("authToken");
       }
     }
 
+    register(userRegister: UserRegister): Observable<any>{
+      return this.http.put(`${environment.APIUrl}/Auth/register`, userRegister)
+    }
 
-    login(email: string, password: string): Observable<{token: string}> {
-      const data = { email, password };
-      const headers = { 'Content-Type': 'application/json' };
-    
-      return this.http.post<{token: string}>(`${environment.APIUrl}/Auth/login`, data, { headers });
+
+    login(userLogin: UserLogin): Observable<any> {
+      return this.http.post(`${environment.APIUrl}/Auth/login`, userLogin, {responseType: 'text'});
+    }
+
+    logout() {
+      localStorage.setItem("authToken", "");
     }
   
-    logout() {
-      this.token = '';
-    }
   }

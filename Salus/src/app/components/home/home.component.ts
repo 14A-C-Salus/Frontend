@@ -17,14 +17,7 @@ constructor(
 
 
   ngOnInit(): void {
-    this.http.get('//localhost:7138/api/Auth', {withCredentials: true}).subscribe({
-      next:res => {
-        console.log(res);
-      },
-      error:err => {
-        console.log(err);
-      }
-    })
+    
   }
 
 
