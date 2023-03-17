@@ -7,6 +7,9 @@
     <label for="password">Password:</label>
     <input type="password" id="password" [(ngModel)]="userLogin.password" name="password" required>
   </div>
+  <div>
+    <a routerLink="/ForgotPassword">Elfelejtett jelszó</a>
+  </div>
   <div class="error">{{ errorMessageLogin }} {{errorMessageVerify}}</div>
   <button type="submit">Login</button>
 </form>

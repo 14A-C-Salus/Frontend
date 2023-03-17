@@ -42,5 +42,9 @@ export class AuthService {
     logout() {
       localStorage.setItem("authToken", "");
     }
+
+    isFirstLogin(): Observable<boolean> {
+      return this.http.get<boolean>(`${environment.APIUrl}/Auth/isFirstLogin`);
+    }
   
   }
