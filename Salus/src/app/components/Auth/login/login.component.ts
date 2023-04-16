@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserLogin } from 'src/app/models/user.login';
+import { UserLogin } from 'src/app/models/auth.login';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  
+
   errorMessageLogin = '';
   errorMessageVerify = '';
   userLogin = new UserLogin()
@@ -21,11 +21,22 @@ export class LoginComponent {
       this.authService.login(userLogin).subscribe({
         next: ( token: string ) => {
           localStorage.setItem('authToken', token)
-          this.router.navigate(['/']);
+          this.router.navigateByUrl('/').then(() => {
+            window.location.replace('/');
+          });
         },
-        error: (error) => {
-          console.log(error)
-        },
+        error: (err) => {
+          if (JSON.parse(err.error).error === 'ENotVerified') {
+            this.errorMessageVerify = 'Your email is not verified';
+            this.errorMessageLogin = '';
+          }
+          if (JSON.parse(err.error).error === 'EUsernamePasswordIncorrect') {
+            this.errorMessageLogin = 'Your email or password is incorrect';
+            this.errorMessageVerify = '';
+          }
+          
+        }
+
       });
     }
   }

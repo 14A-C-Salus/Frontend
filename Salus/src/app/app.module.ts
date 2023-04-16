@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './components/Auth/app.component';
+import { AppComponent } from './app.component';
 import { LoginComponent } from './components/Auth/login/login.component';
 import { HomeComponent } from './components/Auth/home/home.component';
 import { RegisterComponent } from './components/Auth/register/register.component';
@@ -14,6 +14,7 @@ import { ForgotPasswordComponent } from './components/Auth/forgot-password/forgo
 import { CreateProfileComponent } from './components/UserProfile/create-profile/create-profile.component';
 import { ModifyProfileComponent } from './components/UserProfile/modify-profile/modify-profile.component';
 import { SetProfilePictureComponent } from './components/UserProfile/set-profile-picture/set-profile-picture.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { SetProfilePictureComponent } from './components/UserProfile/set-profile
     CreateProfileComponent,
     ModifyProfileComponent,
     SetProfilePictureComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,

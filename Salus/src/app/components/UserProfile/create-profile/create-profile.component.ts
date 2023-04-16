@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
+import { UserProfile } from 'src/app/models/userprofile';
+
 
 @Component({
   selector: 'app-create-profile',
@@ -7,22 +10,30 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./create-profile.component.css']
 })
 export class CreateProfileComponent {
-  userProfileForm: FormGroup;
+  createdProfile: UserProfile = {
+    weight: 0,
+    height: 0,
+    birthDate: new Date(),
+    gender: 0,
+    goalWeight: 0
+  };
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
-    this.userProfileForm = this.formBuilder.group({
-      weight: [0],
-      height: [0],
-      birthDate: ['2023-03-17T10:56:21.503Z'],
-      gender: [0],
-      goalWeight: [0]
-    });
+
   }
 
-  onSubmit() {
-    console.log(this.userProfileForm.value);
-    // submit form logic here
+  createProfile(): void {
+    console.log(this.createdProfile)
+    this.authService.createProfile(this.createdProfile).subscribe({
+      next: res => {
+        alert('Profile Created');
+        this.router.navigate(['/']);
+      },
+      error: err =>{
+        console.log(err);
+      }
+    });
   }
 }

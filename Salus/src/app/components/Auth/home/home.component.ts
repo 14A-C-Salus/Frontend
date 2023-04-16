@@ -1,5 +1,8 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
+import jwt_decode from 'jwt-decode';
+import { DecodedToken } from 'src/app/models/decoded.token';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,15 +11,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit{
 
-
+  authToken = localStorage.getItem('authToken');
 
 constructor(
-  private http: HttpClient,
+  private router: Router,
+  private authService: AuthService,
 ) {}
 
 
   ngOnInit(): void {
+    const decodedToken = jwt_decode(this.authToken!) as DecodedToken;
     
+    if (this.authToken) {
+      this.authService.getUserProfile(decodedToken.id).subscribe({
+        next: res => {
+          return
+        },
+        error: err => {
+          if (err.error.error === 'EUserProfileNotFound') {
+            this.router.navigate(['/CreateProfile']);
+          }
+          
+        }
+      })
+    }
+
+
   }
 
 

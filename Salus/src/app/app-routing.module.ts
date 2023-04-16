@@ -6,6 +6,9 @@ import { HomeComponent } from './components/Auth/home/home.component';
 import { LoginComponent } from './components/Auth/login/login.component';
 import { RegisterComponent } from './components/Auth/register/register.component';
 import { ResetPasswordComponent } from './components/Auth/reset-password/reset-password.component';
+import { CreateProfileComponent } from './components/UserProfile/create-profile/create-profile.component';
+import { ModifyProfileComponent } from './components/UserProfile/modify-profile/modify-profile.component';
+import { SetProfilePictureComponent } from './components/UserProfile/set-profile-picture/set-profile-picture.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -13,6 +16,10 @@ const routes: Routes = [
   { path: 'Register', component: RegisterComponent },
   { path: 'ResetPassword', component: ResetPasswordComponent },
   { path: 'ForgotPassword', component: ForgotPasswordComponent },
+  { path: 'CreateProfile', component: CreateProfileComponent },
+  { path: 'ModifyProfile', component: ModifyProfileComponent },
+  { path: 'SetProfilePicture', component: SetProfilePictureComponent },
+
 ];
 
 @NgModule({

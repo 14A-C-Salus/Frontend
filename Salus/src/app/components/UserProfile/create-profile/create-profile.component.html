@@ -1,32 +1,27 @@
-<form [formGroup]="userProfileForm" (ngSubmit)="onSubmit()">
-    <div>
-      <label for="weight">Weight:</label>
-      <input type="number" id="weight" formControlName="weight">
-    </div>
-  
-    <div>
-      <label for="height">Height:</label>
-      <input type="number" id="height" formControlName="height">
-    </div>
-  
-    <div>
-      <label for="birthDate">Birth Date:</label>
-      <input type="date" id="birthDate" formControlName="birthDate">
-    </div>
-  
-    <div>
-      <label for="gender">Gender:</label>
-      <select id="gender" formControlName="gender">
-        <option value="0">Male</option>
-        <option value="1">Female</option>
-      </select>
-    </div>
-  
-    <div>
-      <label for="goalWeight">Goal Weight:</label>
-      <input type="number" id="goalWeight" formControlName="goalWeight">
-    </div>
-  
-    <button type="submit">Submit</button>
-  </form>
-  
+<h1>Create Profile</h1>
+<form (submit)="createProfile()">
+  <div>
+    <label>Weight (kg):</label>
+    <input type="number" [(ngModel)]="createdProfile.weight" name="weight" required>
+  </div>
+  <div>
+    <label>Height (cm):</label>
+    <input type="number" [(ngModel)]="createdProfile.height" name="height" required>
+  </div>
+  <div>
+    <label>Birth Date:</label>
+    <input type="date" [(ngModel)]="createdProfile.birthDate" name="birthDate" required>
+  </div>
+  <div>
+    <label>Gender:</label>
+    <select [(ngModel)]="createdProfile.gender" name="gender" required>
+      <option value="1">Male</option>
+      <option value="2">Female</option>
+    </select>
+  </div>
+  <div>
+    <label>Goal Weight (kg):</label>
+    <input type="number" [(ngModel)]="createdProfile.goalWeight" name="goalWeight" required>
+  </div>
+  <button type="submit">Create Profile</button>
+</form>
