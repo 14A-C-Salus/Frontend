@@ -1,0 +1,27 @@
+<h1>Create Profile</h1>
+<form (submit)="createProfile()">
+  <div>
+    <label>Weight (kg):</label>
+    <input type="number" [(ngModel)]="createdProfile.weight" name="weight" required>
+  </div>
+  <div>
+    <label>Height (cm):</label>
+    <input type="number" [(ngModel)]="createdProfile.height" name="height" required>
+  </div>
+  <div>
+    <label>Birth Date:</label>
+    <input type="date" [(ngModel)]="createdProfile.birthDate" name="birthDate" required>
+  </div>
+  <div>
+    <label>Gender:</label>
+    <select [(ngModel)]="createdProfile.gender" name="gender" required>
+      <option value="1">Male</option>
+      <option value="2">Female</option>
+    </select>
+  </div>
+  <div>
+    <label>Goal Weight (kg):</label>
+    <input type="number" [(ngModel)]="createdProfile.goalWeight" name="goalWeight" required>
+  </div>
+  <button type="submit">Create Profile</button>
+</form>

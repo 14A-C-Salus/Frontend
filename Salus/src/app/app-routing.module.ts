@@ -1,18 +1,29 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { ForgotPasswordComponent } from './components/Auth/forgot-password/forgot-password.component';
+
+import { HomeComponent } from './components/Auth/home/home.component';
+import { LoginComponent } from './components/Auth/login/login.component';
+import { RegisterComponent } from './components/Auth/register/register.component';
+import { ResetPasswordComponent } from './components/Auth/reset-password/reset-password.component';
+import { CreateProfileComponent } from './components/UserProfile/create-profile/create-profile.component';
+import { ModifyProfileComponent } from './components/UserProfile/modify-profile/modify-profile.component';
+import { SetProfilePictureComponent } from './components/UserProfile/set-profile-picture/set-profile-picture.component';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'Login', component: LoginComponent},
-  {path: 'Register', component: RegisterComponent},
+  { path: '', component: HomeComponent },
+  { path: 'Login', component: LoginComponent },
+  { path: 'Register', component: RegisterComponent },
+  { path: 'ResetPassword', component: ResetPasswordComponent },
+  { path: 'ForgotPassword', component: ForgotPasswordComponent },
+  { path: 'CreateProfile', component: CreateProfileComponent },
+  { path: 'ModifyProfile', component: ModifyProfileComponent },
+  { path: 'SetProfilePicture', component: SetProfilePictureComponent },
 
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -1,23 +1,33 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavComponent } from './nav/nav.component';
-import { LoginComponent } from './login/login.component';
-import { HomeComponent } from './home/home.component';
-import { RegisterComponent } from './register/register.component';
-import { FormsModule , ReactiveFormsModule} from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './components/Auth/login/login.component';
+import { HomeComponent } from './components/Auth/home/home.component';
+import { RegisterComponent } from './components/Auth/register/register.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './services/auth.interceptor';
 
+import { ResetPasswordComponent } from './components/Auth/reset-password/reset-password.component';
+import { ForgotPasswordComponent } from './components/Auth/forgot-password/forgot-password.component';
+import { CreateProfileComponent } from './components/UserProfile/create-profile/create-profile.component';
+import { ModifyProfileComponent } from './components/UserProfile/modify-profile/modify-profile.component';
+import { SetProfilePictureComponent } from './components/UserProfile/set-profile-picture/set-profile-picture.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavComponent,
     LoginComponent,
     HomeComponent,
     RegisterComponent,
+    ResetPasswordComponent,
+    ForgotPasswordComponent,
+    CreateProfileComponent,
+    ModifyProfileComponent,
+    SetProfilePictureComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,7 +36,11 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers:[],
-  bootstrap: [AppComponent]
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

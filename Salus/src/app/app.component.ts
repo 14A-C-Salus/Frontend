@@ -1,22 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit{
-  isAuthenticated: boolean;
+export class AppComponent {
 
-  constructor() { }
 
-  ngOnInit() {
-    const token = localStorage.getItem('token');
-    this.isAuthenticated = token ? true : false;
-  }
-
-  logout() {
-    localStorage.removeItem('token');
-    this.isAuthenticated = false;
-  }
 }
