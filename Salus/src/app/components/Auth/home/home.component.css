@@ -3,8 +3,8 @@
   flex-wrap: wrap;
   justify-content: space-around;
 }
-.rectangle {
-  background-color: #006400;
+.background {
+  background-color: #5c665c;
   color: #FFFFFF;
   padding: 20px;
   margin: 10px;
@@ -12,12 +12,21 @@
   min-width: 300px;
   height: 41vw;
 }
-.rectangle-2 {
+.left-img{
+  background-color: #3CB371;
+  color: #FFFFFF;
+  padding: 20px;
+  margin: 10px;
+  width: 95%;
+  min-width: 200px;
+  height: 36vw;
+}
+.right {
   display: flex;
   flex-wrap: wrap;
   height: 41vw;
 }
-.rectangle-2-1 {
+.right-img-top {
   background-color: #3CB371;
   color: #FFFFFF;
   padding: 20px;
@@ -26,7 +35,7 @@
   min-width: 200px;
   height: 18vw;
 }
-.rectangle-2-2 {
+.right-img-bottom {
   background-color: #2E8B57;
   color: #FFFFFF;
   padding: 20px;
