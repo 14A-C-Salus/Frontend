@@ -42,7 +42,7 @@ export class AuthService {
       return this.http.post(`${environment.APIUrl}/Auth/login`, userLogin, {responseType: 'text'});
     }
     forgotPassword(email: string): Observable<any> {
-      return this.http.patch(`${environment.APIUrl}/Auth/forgot-password`,  email, {responseType: 'text'});
+      return this.http.patch(`${environment.APIUrl}/Auth/forgot-password?email=${email}`, {responseType: 'text'});
     }
     resetPassword(resetPassword: ResetPassword): Observable<any> {
       return this.http.patch(`${environment.APIUrl}/Auth/reset-password`, resetPassword, { responseType: 'text' });
@@ -188,10 +188,10 @@ export class AuthService {
       return this.http.patch<void>(`${environment.APIUrl}/UserProfile/remove-diet`, null, { params });
     }
     createProfile(profile: UserProfile): Observable<UserProfile> {
-      return this.http.post<UserProfile>(`${environment.APIUrl}/UserProfile/create-profile`, profile);
+      return this.http.put<UserProfile>(`${environment.APIUrl}/UserProfile/create-profile`, profile);
     }
     modifyProfile(modifiedProfile: UserProfile): Observable<any> {
-      return this.http.put(`${environment.APIUrl}/UserProfile/modify-profile`, modifiedProfile);
+      return this.http.patch(`${environment.APIUrl}/UserProfile/modify-profile`, modifiedProfile);
     }
     setProfilePicture(profilePicture: any): Observable<any> {
       return this.http.patch<any>(`${environment.APIUrl}/UserProfile/set-profile-picture`, profilePicture);

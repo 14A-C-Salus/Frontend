@@ -1,16 +1,39 @@
 <form (submit)="login(userLogin)">
-  <h1>Login</h1>
-  <div>
-    <label for="email">Email:</label>
-    <input type="email" id="email" [(ngModel)]="userLogin.email" name="email" required>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-5">
+        <div class="card shadow">
+          <div class="card-header">
+            <img src="../../../../assets/img/Salus_logo-removebg-preview.png" class="img-fluid mx-auto d-block" alt="">
+            <h2 class="text-center">Log in</h2>
+          </div>
+          <div class="card-body">
+            <form>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email address:</label>
+                <input type="email" class="form-control" id="email" [(ngModel)]="userLogin.email" name="email" placeholder="Enter email">
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password:</label>
+                <input type="password" class="form-control" id="password" [(ngModel)]="userLogin.password" name="password" placeholder="Password">
+              </div>
+              <div *ngIf="errorMessageVerify" class="alert alert-danger text-center mt-2" role="alert">
+                {{ errorMessageVerify }}
+              </div>
+              <div *ngIf="errorMessageLogin" class="alert alert-danger text-center mt-2" role="alert">
+                {{ errorMessageLogin }}
+              </div>
+            </form>
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary">Log in</button>
+            </div>
+          </div>
+          <div class="card-footer text-center">
+            <a routerLink="/ForgotPassword">Forgot password?</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div>
-    <label for="password">Password:</label>
-    <input type="password" id="password" [(ngModel)]="userLogin.password" name="password" required>
-  </div>
-  <div>
-    <a routerLink="/ForgotPassword">Elfelejtett jelszó</a>
-  </div>
-  <div class="error">{{ errorMessageLogin }} {{errorMessageVerify}}</div>
-  <button type="submit">Login</button>
 </form>
+

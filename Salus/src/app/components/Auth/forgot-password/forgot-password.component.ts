@@ -1,6 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { environment } from 'src/environments/environment';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -13,19 +12,20 @@ export class ForgotPasswordComponent {
   successMessage: string;
   errorMessage: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private authService: AuthService) { }
 
   onSubmit() {
-    this.http.patch(`${environment.APIUrl}Auth/forgot-password`, { email: this.email })
-      .subscribe(
-        (response: any) => {
-          this.successMessage = response.message;
-          this.errorMessage = "";
-        },
-        (error: any) => {
+    this.authService.forgotPassword(this.email).subscribe({
+      next: res => {
+        this.successMessage = "Email sucessfully sent!";
+        this.errorMessage = "";
+      },
+      error: err => {
+        if (err.error.error === 'EUserNotFound') {
+          this.errorMessage = 'This email is wrong';
           this.successMessage = "";
-          this.errorMessage = error.error.message;
         }
-      );
+      }
+    })
   }
 }
