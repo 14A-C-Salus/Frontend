@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ResetPassword } from 'src/app/models/auth.reset.password';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -14,7 +14,10 @@ export class ResetPasswordComponent {
   resetPasswordForm: FormGroup;
   resetPasswordData: ResetPassword = { token: null, password: '', confirmPassword: '' };
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,
+              private route: ActivatedRoute,
+              private router: Router,
+              private authService: AuthService) { }
 
   ngOnInit(): void {
     this.resetPasswordForm = this.formBuilder.group({
@@ -33,9 +36,21 @@ export class ResetPasswordComponent {
     }
   }
 
-  resetPassword(resetPasswordFormValues: any) {
+  resetPassword() {
     if (this.resetPasswordForm.valid) {
-      //this.resetPasswordData.token = 
+      this.resetPasswordData.token = this.route.snapshot.queryParamMap.get('token')
+      console.log(this.resetPasswordData)
+      this.authService.resetPassword(this.resetPasswordData).subscribe({
+        next: res => {
+          alert("Succesfull reset password")
+          this.router.navigate(['/Login']);
+        },
+        error: err =>{
+          console.log(err);
+          
+        }
+      })
     }
+
   }
 }

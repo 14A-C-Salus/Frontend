@@ -1,4 +1,4 @@
-export interface Recipe {
+export interface CreateIngredient {
     name: string;
     kcal: number;
     protein: number;

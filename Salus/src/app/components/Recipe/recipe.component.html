@@ -1,11 +1,13 @@
 <div class="container-fluid">
-  <h1>Recipes</h1>
   <div class="text-center">
-    search
+    <div class="search-container">
+      <span>Search:</span>
+      <input type="text" [(ngModel)]="enteredSearchValue" name="" id="">
+    </div>
   </div>
   <div>
-    <button class="button">Add Recipe</button>
-    <button class="button">Add Ingredient</button>
+    <button class="button" (click)="openModalRecipe()">Add Recipe</button>
+    <button class="button" (click)="openModalIngredient()">Add Ingredient</button>
   </div>
 </div>
 <div class="recipe-container">

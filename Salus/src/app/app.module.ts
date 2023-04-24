@@ -18,6 +18,10 @@ import { NavbarComponent } from './components/Navbar/navbar.component';
 import { RecipeComponent } from './components/Recipe/recipe.component';
 import { MealsComponent } from './components/meals/meals.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { AddIngredientComponent } from './components/Recipe/add-ingredient/add-ingredient.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FilterPipe } from './services/filter.pipe';
+import { AddRecipeComponent } from './components/Recipe/add-recipe/add-recipe.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +38,9 @@ import { AdminComponent } from './components/admin/admin.component';
     RecipeComponent,
     MealsComponent,
     AdminComponent,
+    AddIngredientComponent,
+    FilterPipe,
+    AddRecipeComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +48,7 @@ import { AdminComponent } from './components/admin/admin.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgbModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

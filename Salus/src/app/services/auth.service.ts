@@ -10,9 +10,9 @@ import { UserProfile } from '../models/userprofile';
 import { Diet } from '../models/diet';
 import { AddRecipeToLast24H } from '../models/last24h.new.recipe';
 import { Oil } from '../models/oil';
-import { Recipe } from '../models/recipe.simple';
+import { CreateIngredient } from '../models/recipe.ingredient';
 import { UpdateRecipe } from '../models/recipe.update';
-import { WriteRecipe } from '../models/recipe.create';
+import { CreateRecipe } from '../models/recipe.create';
 import { AddTag } from '../models/recipe.tag';
 import { ResetPassword } from '../models/auth.reset.password';
 import { WriteComment } from '../models/socialmedia.write.comment';
@@ -47,7 +47,7 @@ export class AuthService {
       return this.http.patch(`${environment.APIUrl}/Auth/forgot-password?email=${email}`, {responseType: 'text'});
     }
     resetPassword(resetPassword: ResetPassword): Observable<any> {
-      return this.http.patch(`${environment.APIUrl}/Auth/reset-password`, resetPassword, { responseType: 'text' });
+      return this.http.patch(`${environment.APIUrl}/Auth/reset-password?token=${resetPassword.token}`, resetPassword, { responseType: 'text' });
     }
 
     //Diets
@@ -111,13 +111,13 @@ export class AuthService {
     getRecommendedTags(recipeId: number): Observable<string[]> {
       return this.http.get<string[]>(`${environment.APIUrl}/Recipe/get-recommended-tags?recipeId=${recipeId}`);
     }
-    createSimpleRecipe(recipe: Recipe): Observable<void> {
-      return this.http.put<void>(`${environment.APIUrl}/Recipe/create-simple`, recipe);
+    createIngredient(recipe: CreateIngredient): Observable<CreateIngredient> {
+      return this.http.put<CreateIngredient>(`${environment.APIUrl}/Recipe/create-simple`, recipe);
     }
-    updateRecipe(recipe: Recipe): Observable<any> {
-      return this.http.patch(`${environment.APIUrl}/Recipe/update`, recipe);
+    updateRecipeSimple(recipe: CreateIngredient): Observable<any> {
+      return this.http.patch(`${environment.APIUrl}/Recipe/update-simple`, recipe);
     }
-    replaceRecipe(recipeId: number, recipe: UpdateRecipe): Observable<void> {
+    replaceRecipeSimple(recipeId: number, recipe: UpdateRecipe): Observable<void> {
       return this.http.put<void>(`${environment.APIUrl}/Recipe/${recipeId}`, recipe);
     }
     verifyRecipe(id: number): Observable<void> {
@@ -129,11 +129,11 @@ export class AuthService {
     likeUnlke(recipeId: number): Observable<void> {
       return this.http.patch<void>(`${environment.APIUrl}/Recipe/like-unlike?recipeId=${recipeId}`, null);
     }
-    getAllRecipesByAuthId(authId: number): Observable<Recipe[]> {
-      return this.http.get<Recipe[]>(`${environment.APIUrl}/Recipe/get-all-recipe-by-auth-id?authId=${authId}`);
+    getAllRecipesByAuthId(authId: number): Observable<CreateRecipe[]> {
+      return this.http.get<CreateRecipe[]>(`${environment.APIUrl}/Recipe/get-all-recipe-by-auth-id?authId=${authId}`);
     }
-    createRecipe(request: WriteRecipe): Observable<Recipe> {
-      return this.http.put<Recipe>(`${environment.APIUrl}/Recipe/create`, request);
+    createRecipe(request: CreateRecipe): Observable<CreateRecipe> {
+      return this.http.put<CreateRecipe>(`${environment.APIUrl}/Recipe/create`, request);
     }
     deleteRecipe(id: number): Observable<any> {
       return this.http.delete(`${environment.APIUrl}/delete?id=${id}`);

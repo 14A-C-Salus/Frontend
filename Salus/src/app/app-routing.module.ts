@@ -18,7 +18,7 @@ import { AuthGuardAdmin } from './services/admin.guard';
 
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: '', component: HomeComponent},
   { path: 'Login', component: LoginComponent},
   { path: 'Register', component: RegisterComponent},
   { path: 'ResetPassword', component: ResetPasswordComponent},
@@ -26,7 +26,7 @@ const routes: Routes = [
   { path: 'CreateProfile', component: CreateProfileComponent, canActivate: [AuthGuard] },
   { path: 'ModifyProfile', component: ModifyProfileComponent, canActivate: [AuthGuard] },
   { path: 'SetProfilePicture', component: SetProfilePictureComponent, canActivate: [AuthGuard] },
-  { path: 'Recipe', component: RecipeComponent, canActivate: [AuthGuard] },
+  { path: 'Recipe', component: RecipeComponent, canActivate: [AuthGuard]},
   { path: 'Meals', component: MealsComponent, canActivate: [AuthGuard] },
   { path: 'Admin', component: AdminComponent, canActivate: [AuthGuard] },
 
