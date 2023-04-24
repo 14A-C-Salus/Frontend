@@ -6,7 +6,10 @@
   color: white;
 }
 .navbar{
-  background: #e4e4e4;
+  background-color: #e4e4e4;
+}
+*{
+  font-family: 'Samsung Sharp Sans', sans-serif;
 }
 .dropbtn {
   background-color: #0c720c;
