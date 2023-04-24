@@ -18,6 +18,8 @@ import { ResetPassword } from '../models/auth.reset.password';
 import { WriteComment } from '../models/socialmedia.write.comment';
 import { CreateTag } from '../models/tag.create';
 import { UpdateTag } from '../models/tag.update';
+import jwt_decode from 'jwt-decode';
+import { DecodedToken } from '../models/decoded.token';
 
 
 @Injectable({
@@ -196,4 +198,21 @@ export class AuthService {
     setProfilePicture(profilePicture: any): Observable<any> {
       return this.http.patch<any>(`${environment.APIUrl}/UserProfile/set-profile-picture`, profilePicture);
     }
+
+    isLoggedIn(){
+      if(localStorage.getItem('authToken'))
+        return true
+      else
+        return false
+    }
+    isAdmin(){
+      const authToken = localStorage.getItem('authToken');
+      const decodedToken = jwt_decode(authToken!) as DecodedToken;
+      if(decodedToken.role == "admin")
+        return true
+      else
+        return false
+
+    }
   }
+

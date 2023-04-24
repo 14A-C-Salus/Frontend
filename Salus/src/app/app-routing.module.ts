@@ -10,17 +10,26 @@ import { CreateProfileComponent } from './components/UserProfile/create-profile/
 import { ModifyProfileComponent } from './components/UserProfile/modify-profile/modify-profile.component';
 import { SetProfilePictureComponent } from './components/UserProfile/set-profile-picture/set-profile-picture.component';
 import { RecipeComponent } from './components/Recipe/recipe.component';
+import { MealsComponent } from './components/meals/meals.component';
+import { AuthGuard } from './services/auth.guard';
+import { AdminComponent } from './components/admin/admin.component';
+import { AuthGuardAdmin } from './services/admin.guard';
+
+
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'Login', component: LoginComponent },
-  { path: 'Register', component: RegisterComponent },
-  { path: 'ResetPassword', component: ResetPasswordComponent },
-  { path: 'ForgotPassword', component: ForgotPasswordComponent },
-  { path: 'CreateProfile', component: CreateProfileComponent },
-  { path: 'ModifyProfile', component: ModifyProfileComponent },
-  { path: 'SetProfilePicture', component: SetProfilePictureComponent },
-  { path: 'Recipe', component: RecipeComponent },
+  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'Login', component: LoginComponent},
+  { path: 'Register', component: RegisterComponent},
+  { path: 'ResetPassword', component: ResetPasswordComponent},
+  { path: 'ForgotPassword', component: ForgotPasswordComponent},
+  { path: 'CreateProfile', component: CreateProfileComponent, canActivate: [AuthGuard] },
+  { path: 'ModifyProfile', component: ModifyProfileComponent, canActivate: [AuthGuard] },
+  { path: 'SetProfilePicture', component: SetProfilePictureComponent, canActivate: [AuthGuard] },
+  { path: 'Recipe', component: RecipeComponent, canActivate: [AuthGuard] },
+  { path: 'Meals', component: MealsComponent, canActivate: [AuthGuard] },
+  { path: 'Admin', component: AdminComponent, canActivate: [AuthGuard] },
+
 
 ];
 

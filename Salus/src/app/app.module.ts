@@ -16,6 +16,8 @@ import { ModifyProfileComponent } from './components/UserProfile/modify-profile/
 import { SetProfilePictureComponent } from './components/UserProfile/set-profile-picture/set-profile-picture.component';
 import { NavbarComponent } from './components/Navbar/navbar.component';
 import { RecipeComponent } from './components/Recipe/recipe.component';
+import { MealsComponent } from './components/meals/meals.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { RecipeComponent } from './components/Recipe/recipe.component';
     SetProfilePictureComponent,
     NavbarComponent,
     RecipeComponent,
+    MealsComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
