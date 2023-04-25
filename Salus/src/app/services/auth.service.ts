@@ -74,7 +74,16 @@ export class AuthService {
     }
 
     //Last24H
-
+    getTodayDate(): string {
+      const today = new Date();
+      const year = today.getFullYear();
+      const month = (today.getMonth() + 1).toString().padStart(2, '0');
+      const day = today.getDate().toString().padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    }
+    getRecipeFromLast24h(): Observable<void[]> {
+      return this.http.get<void[]>(`${environment.APIUrl}/Last24h/get-all?date=${this.getTodayDate()}`);
+    }
     addRecipeToLast24H(recipe: AddRecipeToLast24H): Observable<void> {
       return this.http.put<void>(`${environment.APIUrl}/Last24h/add-new-recipe`, recipe);
     }
@@ -104,6 +113,9 @@ export class AuthService {
     }
     deleteOil(id: number): Observable<any> {
       return this.http.delete(`${environment.APIUrl}/Oil/delete?id=${id}`);
+    }
+    getAllOil(): Observable<any> {
+      return this.http.get<any>(`${environment.APIUrl}/Oil/get-all`);
     }
 
     //Recipe
@@ -136,7 +148,10 @@ export class AuthService {
       return this.http.put<CreateRecipe>(`${environment.APIUrl}/Recipe/create`, request);
     }
     deleteRecipe(id: number): Observable<any> {
-      return this.http.delete(`${environment.APIUrl}/delete?id=${id}`);
+      return this.http.delete(`${environment.APIUrl}/Recipe/delete?id=${id}`);
+    }
+    getAllRecipe(): Observable<any[]> {
+      return this.http.get<any[]>(`${environment.APIUrl}/Recipe/get-all`);
     }
 
     //SocialMedia

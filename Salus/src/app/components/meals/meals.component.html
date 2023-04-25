@@ -1,1 +1,22 @@
-<p>meals works!</p>
+<h1>Today's Food Diary</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Food</th>
+      <th>Calories</th>
+      <th>Protein (g)</th>
+      <th>Fat (g)</th>
+      <th>Carbohydrates (g)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let food of foods">
+        <td>{{ food.id }}</td>
+        <td>{{ food.kcal }}</td>
+        <td>{{ food.protein }}</td>
+        <td>{{ food.fat }}</td>
+        <td>{{ food.carbohydrate }}</td>
+      </tr>
+  </tbody>
+</table>

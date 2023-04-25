@@ -9,7 +9,14 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./add-ingredient.component.css']
 })
 export class AddIngredientComponent {
-  data: CreateIngredient;
+
+  data: CreateIngredient= {
+    name: "Example name",
+    kcal: 100,
+    protein: 15,
+    fat: 5,
+    carbohydrate: 10,
+  };
 
   constructor(private authService: AuthService,
               private modalService: NgbModal) {

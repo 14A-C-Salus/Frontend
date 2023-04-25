@@ -25,21 +25,18 @@
   height: 41vw;
 }
 .right-img-top {
-  background-color: #3CB371;
   color: #FFFFFF;
   margin: 10px;
-  width: 100%;
+  width: 119.5%;
   height: 18vw;
   opacity: 50%;
 }
 .right-img-bottom {
-  background-color: #2E8B57;
   color: #FFFFFF;
-  padding: 20px;
   margin: 10px;
-  width: 100%;
-  min-width: 100px;
+  width: 97.5%;
   height: 18vw;
+  opacity: 50%;
 }
 .link-text {
   position: absolute;

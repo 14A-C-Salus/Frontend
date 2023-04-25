@@ -21,6 +21,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FilterPipe } from './services/filter.pipe';
 import { AddRecipeComponent } from './components/Recipe/add-recipe/add-recipe.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { AddMealsComponent } from './components/Recipe/add-meals/add-meals.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     AddIngredientComponent,
     FilterPipe,
     AddRecipeComponent,
+    AddMealsComponent,
+    AboutUsComponent,
   ],
   imports: [
     BrowserModule,

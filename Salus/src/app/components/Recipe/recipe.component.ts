@@ -2,9 +2,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddIngredientComponent } from './add-ingredient/add-ingredient.component';
 import { AuthService } from 'src/app/services/auth.service';
-import { HttpClient } from '@angular/common/http';
-import { RecipeGetAll } from 'src/app/models/recipe.getall';
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
+import { AddMealsComponent } from './add-meals/add-meals.component';
 
 @Component({
   selector: 'app-recipe',
@@ -13,44 +12,33 @@ import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 })
 export class RecipeComponent implements OnInit {
 
-  constructor(private modalService: NgbModal,
-              private http: HttpClient ) { }
-
-
-
-  ngOnInit() {
-
-  }
-  enteredSearchValue = '';
-
-  @Output()
-  searchTextChanged: EventEmitter<string> = new EventEmitter<string>();
-
-  onSeachTextChanged(){
-    this.searchTextChanged.emit(this.enteredSearchValue);
-  }
-  characters = [
-    'Ant-Man',
-    'Aquaman',
-    'Asterix',
-    'The Atom',
-    'The Avengers',
-    'Batgirl',
-    'Batman',
-    'Batwoman',
-
-  ]
   openModalIngredient() {
-    const modalRef = this.modalService.open(AddIngredientComponent);
-    modalRef.componentInstance.data = {
-      name: 'example name',
-      kcal: 100,
-      protein: 20,
-      fat: 5,
-      carbohydrate: 10
-    };
+    this.modalService.open(AddIngredientComponent);
   }
   openModalRecipe() {
-    const modalRef = this.modalService.open(AddRecipeComponent);
+    this.modalService.open(AddRecipeComponent);
+  }
+  constructor(private modalService: NgbModal,
+    private authService: AuthService ) { }
+
+  recipes: any[] = []
+
+ngOnInit() {
+    this.authService.getAllRecipe().subscribe({
+      next:res => {
+      this.recipes = res
+
+      },
+      error: err =>{
+      console.log(err);
+      }
+    })
+  }
+  addMeals(id: number){
+    const modalRef=this.modalService.open(AddMealsComponent);
+    modalRef.componentInstance.meals = {
+      recipeId: id,
+      portion: 0
+    };
   }
 }

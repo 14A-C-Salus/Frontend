@@ -13,6 +13,7 @@ import { MealsComponent } from './components/meals/meals.component';
 import { AuthGuard } from './services/auth.guard';
 import { AdminComponent } from './components/admin/admin.component';
 import { AuthGuardAdmin } from './services/admin.guard';
+import { AboutUsComponent } from './components/about-us/about-us.component';
 
 
 
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'Recipe', component: RecipeComponent, canActivate: [AuthGuard]},
   { path: 'Meals', component: MealsComponent, canActivate: [AuthGuard] },
   { path: 'Admin', component: AdminComponent, canActivate: [AuthGuard] },
+  { path: 'AboutUs', component: AboutUsComponent},
 
 
 ];

@@ -1,10 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-meals',
   templateUrl: './meals.component.html',
   styleUrls: ['./meals.component.css']
 })
-export class MealsComponent {
+export class MealsComponent implements OnInit {
+
+
+  constructor(private authService: AuthService) {
+    
+  }
+  foods: any[] = [];
+
+  ngOnInit(): void {
+    this.authService.getRecipeFromLast24h().subscribe({
+      next: res => {
+        this.foods = res
+        
+      },
+      error: err =>{
+        console.log(err);
+        
+      }
+    })
+  }
 
 }
