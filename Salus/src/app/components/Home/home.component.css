@@ -27,11 +27,10 @@
 .right-img-top {
   background-color: #3CB371;
   color: #FFFFFF;
-  padding: 20px;
   margin: 10px;
   width: 100%;
-  min-width: 200px;
   height: 18vw;
+  opacity: 50%;
 }
 .right-img-bottom {
   background-color: #2E8B57;

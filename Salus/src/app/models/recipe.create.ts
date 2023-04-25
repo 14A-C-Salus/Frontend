@@ -1,4 +1,4 @@
-export interface WriteRecipe {
+export interface CreateRecipe {
     ingredientIds: number[];
     ingredientPortionGramm: number[];
     method: number;

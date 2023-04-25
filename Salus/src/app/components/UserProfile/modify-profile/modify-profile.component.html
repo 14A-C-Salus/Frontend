@@ -1,27 +1,48 @@
-<h1>Modify Profile</h1>
-<form (submit)="modifyProfile()">
-  <div>
-    <label>Weight (kg):</label>
-    <input type="number" [(ngModel)]="modifiedProfile.weight" name="weight" required>
-  </div>
-  <div>
-    <label>Height (cm):</label>
-    <input type="number" [(ngModel)]="modifiedProfile.height" name="height" required>
-  </div>
-  <div>
-    <label>Birth Date:</label>
-    <input type="date" [(ngModel)]="modifiedProfile.birthDate" name="birthDate" required>
-  </div>
-  <div>
-    <label>Gender:</label>
-    <select [(ngModel)]="modifiedProfile.gender" name="gender" required>
-      <option value="1">Male</option>
-      <option value="2">Female</option>
-    </select>
-  </div>
-  <div>
-    <label>Goal Weight (kg):</label>
-    <input type="number" [(ngModel)]="modifiedProfile.goalWeight" name="goalWeight" required>
-  </div>
-  <button type="submit">Modify Profile</button>
-</form>
+<div class="container mt-5">
+  <h1 class="text-center mb-5">Modify Profile</h1>
+  <form class="row g-3 needs-validation" (submit)="modifyProfile(); profileForm.reset()" #profileForm="ngForm" novalidate>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="weight" class="form-label">Weight (kg):</label>
+        <input type="number" class="form-control" id="weight" [(ngModel)]="modifiedProfile.weight" name="weight" required #weight="ngModel">
+        <div class="invalid-feedback" *ngIf="weight.invalid && (weight.dirty || weight.touched)">
+          <span *ngIf="weight.errors?.['required']">Weight is required.</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="height" class="form-label">Height (cm):</label>
+        <input type="number" class="form-control" id="height" [(ngModel)]="modifiedProfile.height" name="height" required #height="ngModel">
+        <div class="invalid-feedback" *ngIf="height.invalid && (height.dirty || height.touched)">
+          <span *ngIf="height.errors?.['required']">Height is required.</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="birthDate" class="form-label">Birth Date:</label>
+        <input type="date" class="form-control" id="birthDate" [(ngModel)]="modifiedProfile.birthDate" name="birthDate" required #birthDate="ngModel">
+        <div class="invalid-feedback" *ngIf="birthDate.invalid && (birthDate.dirty || birthDate.touched)">
+          <span *ngIf="birthDate.errors?.['required']">Birth Date is required.</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="gender" class="form-label">Gender:</label>
+        <select class="form-select" id="gender" [(ngModel)]="modifiedProfile.gender" name="gender" required #gender="ngModel">
+          <option value="" disabled selected>Select Gender</option>
+          <option value="1">Male</option>
+          <option value="2">Female</option>
+        </select>
+        <div class="invalid-feedback" *ngIf="gender.invalid && (gender.dirty || gender.touched)">
+          <span *ngIf="gender.errors?.['required']">Gender is required.</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="goalWeight" class="form-label">Goal Weight (kg):</label>
+        <input type="number" class="form-control" id="goalWeight" [(ngModel)]="modifiedProfile.goalWeight" name="goalWeight" required #goalWeight="ngModel">
+        <div class="invalid-feedback" *ngIf="goalWeight.invalid && (goalWeight.dirty || goalWeight.touched)">
+          <span *ngIf="goalWeight.errors?.['required']">Goal Weight is required.</span>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

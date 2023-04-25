@@ -13,8 +13,6 @@ import { ResetPasswordComponent } from './components/Auth/reset-password/reset-p
 import { ForgotPasswordComponent } from './components/Auth/forgot-password/forgot-password.component';
 import { CreateProfileComponent } from './components/UserProfile/create-profile/create-profile.component';
 import { ModifyProfileComponent } from './components/UserProfile/modify-profile/modify-profile.component';
-import { SetProfilePictureComponent } from './components/UserProfile/set-profile-picture/set-profile-picture.component';
-import { NavbarComponent } from './components/Navbar/navbar.component';
 import { RecipeComponent } from './components/Recipe/recipe.component';
 import { MealsComponent } from './components/meals/meals.component';
 import { AdminComponent } from './components/admin/admin.component';
@@ -22,6 +20,7 @@ import { AddIngredientComponent } from './components/Recipe/add-ingredient/add-i
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FilterPipe } from './services/filter.pipe';
 import { AddRecipeComponent } from './components/Recipe/add-recipe/add-recipe.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +32,6 @@ import { AddRecipeComponent } from './components/Recipe/add-recipe/add-recipe.co
     ForgotPasswordComponent,
     CreateProfileComponent,
     ModifyProfileComponent,
-    SetProfilePictureComponent,
     NavbarComponent,
     RecipeComponent,
     MealsComponent,
