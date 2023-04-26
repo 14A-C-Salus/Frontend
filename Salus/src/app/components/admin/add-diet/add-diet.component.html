@@ -1,0 +1,20 @@
+<div class="modal-header">
+    <h5 class="modal-title">Add diets</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <p>{{ data.description }}</p>
+    <ul>
+        <li>Fat: <input type="text" name="" id="">g - {{ data.maxFat }}g</li>
+        <li>Carbohydrate: {{ data.minCarbohydrate }}g - {{ data.maxCarbohydrate }}g</li>
+        <li>Protein: {{ data.minProtein }}g - {{ data.maxProtein }}g</li>
+        <li>Kcal: {{ data.minKcal }} - {{ data.maxKcal }}</li>
+        <li>Dl: {{ data.minDl }} - {{ data.maxDl }}</li>
+    </ul>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+</div>

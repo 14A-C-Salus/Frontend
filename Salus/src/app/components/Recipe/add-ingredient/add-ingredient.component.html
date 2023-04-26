@@ -1,0 +1,32 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title">Add Ingredient</h5>
+    <button type="button" class="btn-close float-right" data-dismiss="modal" aria-label="Close" (click)="Close()"></button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <label>Name:</label>
+      <input type="text" class="form-control" [(ngModel)]="data.name">
+    </div>
+    <div class="form-group">
+      <label>Kcal:</label>
+      <input type="number" class="form-control" [(ngModel)]="data.kcal">
+    </div>
+    <div class="form-group">
+      <label>Protein:</label>
+      <input type="number" class="form-control" [(ngModel)]="data.protein">
+    </div>
+    <div class="form-group">
+      <label>Fat:</label>
+      <input type="number" class="form-control" [(ngModel)]="data.fat">
+    </div>
+    <div class="form-group">
+      <label>Carbohydrate:</label>
+      <input type="number" class="form-control" [(ngModel)]="data.carbohydrate">
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="Close()">Close</button>
+    <button type="button" class="btn btn-primary" (click)="SaveIngredient()">Save changes</button>
+  </div>
+</div>

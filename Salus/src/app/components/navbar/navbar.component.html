@@ -1,24 +1,37 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
-  <div class="container-fluid">
-    <a routerLink="/" class="navbar-brand"><img src="Salus_logo-removebg-preview.png" alt="asdasd" width="30" height="24" class="d-inline-block align-text-top"></a>
-    <div *ngIf="!authToken" class="nav-item">
-      <ul class="navbar-nav me-auto mb-2 mb-md-0">
-        <li class="nav-item">
-          <a routerLink="/Login" class="nav-link">Login</a>
-        </li>
-        <li class="nav-item">
-          <a routerLink="/Register" class="nav-link">Register</a>
-        </li>
-      </ul>
-    </div>
-    <div *ngIf="authToken" class="nav-item dropdown">
-      <div class="dropdown">
-        <button class="dropbtn">{{ userName }} </button>
-        <div class="dropdown-content">
-          <a routerLink="/ModifyProfile" class="dropdown-item">Modify Profile</a>
-          <a class="dropdown-item" (click)="logout()">Log Out</a>
+<div class="fluid-container header navbar-white">
+  <h1>Salus</h1>
+</div>
+<nav class="navbar navbar-expand-md navbar-white mb-4 ">
+  <div class="container-fluid container">
+    <a routerLink="/" class="navbar-brand">Home
+    </a>
+    <a class="nav-link mt-1" routerLink="/Recipe" routerLinkActive="active">Recipe</a>
+    <a class="nav-link mt-1 ms-3" routerLink="/Meals" routerLinkActive="active">Meal</a>
+    <a class="nav-link mt-1 ms-3" routerLink="/AboutUs" routerLinkActive="active">About us</a>
+    <a class="nav-link mt-1 ms-3" routerLink="/Admin" *ngIf="isAdmin()" routerLinkActive="active">Admin</a>
+    <button class="navbar-toggler" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto">
+          <li class="nav-item" >
+            <a routerLink="/Login" class="nav-link" *ngIf="!authToken">Login</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/Register" class="nav-link" *ngIf="!authToken">Register</a>
+          </li>
+        <div *ngIf="authToken">
+          <li class="nav-item" class="dropdown">
+            <div class="dropdown" style="float:right;">
+              <button class="dropbtn">{{userName}}</button>
+              <div class="dropdown-content">
+                <a routerLink="/ModifyProfile" class="dropdown-item">Modify Profile</a>
+                <a class="dropdown-item" (click)="logout()">Log Out</a>
+              </div>
+            </div>
+          </li>
         </div>
-      </div>   
+      </ul>
     </div>
   </div>
 </nav>

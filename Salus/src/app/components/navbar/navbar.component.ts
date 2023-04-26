@@ -7,35 +7,33 @@ import { DecodedToken } from 'src/app/models/decoded.token';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
   userName: string;
   authToken = localStorage.getItem('authToken');
-
-
-  constructor( private router: Router,
-              private authService: AuthService) {}
-
+  
+  constructor(private router: Router, private authService: AuthService) {}
+  
   ngOnInit() {
-    const decodedToken = jwt_decode(this.authToken!) as DecodedToken;
-    
     if (this.authToken) {
+      const decodedToken = jwt_decode(this.authToken!) as DecodedToken;
       this.authService.getAuth(decodedToken.id).subscribe({
         next: (res: any) => {
-          this.userName = res.username
+          this.userName = res.username;
         },
-        error: err => {
+        error: (err) => {
           console.log(err);
-          
-        }
-      })
+        },
+      });
     }
   }
 
   logout(): void {
-    this.authToken = null;
     localStorage.removeItem('authToken');
-    this.router.navigate(['/']);
+    location.reload();
+  }
+  isAdmin() {
+    this.authService.isAdmin();
   }
 }

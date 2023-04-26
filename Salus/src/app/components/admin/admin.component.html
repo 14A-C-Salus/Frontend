@@ -1,0 +1,60 @@
+<div class="text-center">
+
+  <h1>Admin page</h1>
+</div>
+<div class="container mt-5">
+  <div class="box">
+    <div class="text-center">
+      <header>
+        <h2>Diets</h2>
+      </header>
+    </div>
+    <button class="btn btn-primary" (click)="addDiet()">
+      +
+    </button>
+    <div class="mt-2">
+      <label for="">Example name Diet</label>
+      <button class="btn btn-danger">Delete</button>
+    </div>
+    <div class="mt-4" *ngFor="let diet of diets">
+      <label for="">{{diet.name}}</label>
+      <button class="btn btn-danger" (click)="deleteDiet(diet.id)">Delete</button>
+    </div>
+  </div>
+  <div class="box">
+    <div class="text-center">
+      <header>
+        <h2>Oils</h2>
+      </header>
+    </div>
+    <button class="btn btn-primary" (click)="addOil()">
+      +
+    </button>
+    <div class="mt-2">
+      <label for="">Example name</label>
+      <button class="btn btn-danger">Delete</button>
+    </div>
+    <div class="mt-4" *ngFor="let oil of oils">
+      <label for="">{{oil.name}}</label>
+      <button class="btn btn-danger" (click)="deleteOil(oil.id)">Delete</button>
+    </div>
+  </div>
+  <div class="box">
+    <div class="text-center">
+      <header>
+        <h2>Tags</h2>
+      </header>
+    </div>
+    <button class="btn btn-primary" (click)="addTag()">
+      +
+    </button>
+    <div class="mt-2">
+      <label for="">Example name</label>
+      <button class="btn btn-danger">Delete</button>
+    </div>
+    <div class="mt-4" *ngFor="let tag of tags">
+      <label for="">{{tag.name}}</label>
+      <button class="btn btn-danger" (click)="deleteDiet(tag.id)">Delete</button>
+    </div>
+  </div>
+</div>

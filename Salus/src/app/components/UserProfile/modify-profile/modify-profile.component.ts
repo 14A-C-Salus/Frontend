@@ -8,7 +8,7 @@ import { DecodedToken } from 'src/app/models/decoded.token';
 @Component({
   selector: 'app-modify-profile',
   templateUrl: './modify-profile.component.html',
-  styleUrls: ['./modify-profile.component.css']
+  styleUrls: ['./modify-profile.component.css'],
 })
 export class ModifyProfileComponent {
   modifiedProfile: UserProfile = {
@@ -16,33 +16,37 @@ export class ModifyProfileComponent {
     height: 0,
     birthDate: new Date(),
     gender: 0,
-    goalWeight: 0
+    goalWeight: 0,
   };
   authToken = localStorage.getItem('authToken');
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
-    const decodedToken = jwt_decode(this.authToken!) as DecodedToken;
-    this.authService.getUserProfile(decodedToken.id).subscribe({
-      next: userProfile => {
-        this.modifiedProfile = userProfile;
-      },
-      error: err =>{
-        console.log(err);
-      }
-    });
+
+    if(this.authToken){
+      const decodedToken = jwt_decode(this.authToken!) as DecodedToken;
+      this.authService.getUserProfile(decodedToken.id).subscribe({
+        next: (userProfile) => {
+          this.modifiedProfile = userProfile;
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
+    }
+
   }
 
   modifyProfile(): void {
     this.authService.modifyProfile(this.modifiedProfile).subscribe({
-      next: res => {
+      next: (res) => {
         alert('Profile Modified');
         this.router.navigate(['/']);
       },
-      error: err =>{
+      error: (err) => {
         console.log(err);
-      }
+      },
     });
   }
 }

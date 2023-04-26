@@ -1,5 +1,5 @@
 export interface Oil {
-    id: number;
-    name: string;
-    calIn14Ml: number;
-  }
+  id: number;
+  name: string;
+  calIn14Ml: number;
+}

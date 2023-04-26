@@ -9,18 +9,17 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-
   errorMessageLogin = '';
   errorMessageVerify = '';
-  userLogin = new UserLogin()
+  userLogin = new UserLogin();
 
   constructor(private authService: AuthService, private router: Router) {}
 
   login(userLogin: UserLogin): void {
     if (userLogin.email && userLogin.password) {
       this.authService.login(userLogin).subscribe({
-        next: ( token: string ) => {
-          localStorage.setItem('authToken', token)
+        next: (token: string) => {
+          localStorage.setItem('authToken', token);
           this.router.navigateByUrl('/').then(() => {
             window.location.replace('/');
           });
@@ -34,9 +33,7 @@ export class LoginComponent {
             this.errorMessageLogin = 'Your email or password is incorrect';
             this.errorMessageVerify = '';
           }
-          
-        }
-
+        },
       });
     }
   }

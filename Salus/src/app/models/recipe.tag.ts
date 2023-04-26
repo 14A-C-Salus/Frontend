@@ -1,4 +1,4 @@
 export interface AddTag {
-    recipeId: number;
-    tagIds: number[];
-  }
+  recipeId: number;
+  tagIds: number[];
+}
