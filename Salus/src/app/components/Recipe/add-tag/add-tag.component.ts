@@ -24,19 +24,24 @@ export class AddTagComponent implements OnInit {
   ngOnInit(): void {
     this.authService.getAllTags().subscribe({
       next: (res) => {
-        this.tags = res;
+        this.tags = res
+        console.log(this.tags);
+        
+        
       },
       error: (err) => {
         console.log(err);
       },
     });
+    
+    
   }
 
   Close() {
     this.modalService.dismissAll();
   }
 
-  onSubmit() {
+  saveTag() {
       this.authService.addTagsToRecipe(this.data).subscribe({
         next: (res) => {
           this.modalService.dismissAll();
@@ -46,5 +51,6 @@ export class AddTagComponent implements OnInit {
           console.log(err);
         },
       });
+      
   }
 }

@@ -4,6 +4,7 @@ import { AddIngredientComponent } from './add-ingredient/add-ingredient.componen
 import { AuthService } from 'src/app/services/auth.service';
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 import { AddMealsComponent } from './add-meals/add-meals.component';
+import { AddTagComponent } from './add-tag/add-tag.component';
 
 @Component({
   selector: 'app-recipe',
@@ -43,10 +44,10 @@ export class RecipeComponent implements OnInit {
     };
   }
   addTag(id: number) {
-    const modalRef = this.modalService.open(AddMealsComponent);
-    modalRef.componentInstance.meals = {
+    const modalRef = this.modalService.open(AddTagComponent);
+    modalRef.componentInstance.data = {
       recipeId: id,
-      tagIds: 0,
+      tagIds: [],
     };
   }
   deleteRecipe(id: any) {

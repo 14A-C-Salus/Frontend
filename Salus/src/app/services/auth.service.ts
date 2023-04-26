@@ -256,7 +256,7 @@ export class AuthService {
     );
   }
   getAllTags(): Observable<any[]> {
-    return this.http.get<any[]>(`${environment.APIUrl}/Tag/get-all`);
+    return this.http.get<any[]>(`http://salushl-001-site1.dtempurl.com/api/Tag/get-all`);
   }
 
   //UserProfile
