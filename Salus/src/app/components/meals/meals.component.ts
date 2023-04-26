@@ -4,27 +4,30 @@ import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-meals',
   templateUrl: './meals.component.html',
-  styleUrls: ['./meals.component.css']
+  styleUrls: ['./meals.component.css'],
 })
 export class MealsComponent implements OnInit {
-
-
-  constructor(private authService: AuthService) {
-    
-  }
+  constructor(private authService: AuthService) {}
   foods: any[] = [];
 
   ngOnInit(): void {
     this.authService.getRecipeFromLast24h().subscribe({
-      next: res => {
-        this.foods = res
-        
+      next: (res) => {
+        this.foods = res;
       },
-      error: err =>{
+      error: (err) => {
         console.log(err);
-        
-      }
-    })
+      },
+    });
   }
-
+  deleteMeal(id: any) {
+    this.authService.deleteRecipeFromLast24h(id).subscribe({
+      next: (res) => {
+        location.reload();
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
 }

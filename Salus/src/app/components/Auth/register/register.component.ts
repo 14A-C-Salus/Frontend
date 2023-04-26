@@ -11,9 +11,13 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
-  userRegister = new UserRegister()
+  userRegister = new UserRegister();
 
-  constructor(private fb: FormBuilder,private authService:AuthService, private router: Router) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.registerForm = this.fb.group(
@@ -44,16 +48,15 @@ export class RegisterComponent implements OnInit {
   }
 
   register(userRegister: UserRegister): void {
-     this.authService.register(userRegister)
-      .subscribe({
-        next: (res) => {
-          alert('Succesfull Sign-up');
-          this.router.navigate(['/Login']);
-        },
-        error: (err) => {
-            alert('This email is already registered');
-        }
-      });
+    this.authService.register(userRegister).subscribe({
+      next: (res) => {
+        alert('Succesfull Sign-up');
+        this.router.navigate(['/Login']);
+      },
+      error: (err) => {
+        alert('This email is already registered');
+      },
+    });
   }
 
   passwordMatchValidator(formGroup: FormGroup) {

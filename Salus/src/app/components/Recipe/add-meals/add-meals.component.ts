@@ -7,42 +7,41 @@ import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-add-meals',
   templateUrl: './add-meals.component.html',
-  styleUrls: ['./add-meals.component.css']
+  styleUrls: ['./add-meals.component.css'],
 })
 export class AddMealsComponent {
-
   recipeForm: FormGroup;
 
   @Input() meals: AddRecipeToLast24H;
 
-  constructor(private fb: FormBuilder,
-              private authService: AuthService,
-              private modalService: NgbModal) {
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private modalService: NgbModal
+  ) {
     this.createForm();
   }
 
   createForm() {
     this.recipeForm = this.fb.group({
       recipeId: [null, Validators.required],
-      portion: [null, Validators.required]
+      portion: [null, Validators.required],
     });
   }
-  Close(){
-    this.modalService.dismissAll()
+  Close() {
+    this.modalService.dismissAll();
   }
   onSubmit() {
     console.log(this.meals);
-    
+
     this.authService.addRecipeToLast24H(this.meals).subscribe({
-      next: res => {
-        this.modalService.dismissAll()
+      next: (res) => {
+        this.modalService.dismissAll();
+        location.reload();
       },
-      error: err => {
+      error: (err) => {
         console.log(err);
-        
-      }
-    })
+      },
+    });
   }
-
-
 }

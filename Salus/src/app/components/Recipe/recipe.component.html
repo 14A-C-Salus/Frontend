@@ -2,13 +2,14 @@
   <div class="text-center">
   </div>
   <div>
-    <button class="button" (click)="openModalRecipe()">Add Recipe</button>
-    <button class="button ms-2" (click)="openModalIngredient()">Add Ingredient</button>
+    <button class="button" (click)="addRecipe()">Add Recipe</button>
+    <button class="button ms-2" (click)="addIngredient()">Add Ingredient</button>
   </div>
 </div>
 <div class="recipe-container">
   <div *ngFor="let recipe of recipes" class="recipe-container">
     <div class="recipe">
+      <button type="button" class="btn-close float-right" data-dismiss="modal" aria-label="Close" (click)="deleteRecipe(recipe.id)"></button>
       <h1>{{recipe.name}}</h1>
       <h2>Kcal</h2>
       <ul class="ingredients">
@@ -26,8 +27,16 @@
       <ul class="ingredients">
         <li>{{recipe.carbohydrate}}</li>
       </ul>
-      <button class="btn btn-primary" (click)="addMeals(recipe.id)">Add meals</button>
+      <div>
+        <button class="btn btn-succes">Fat</button>
+      </div>
+      <div *ngFor="let tag of recipes.tags">
+        <button class="btn btn-succes">{{tag.name}}</button>
+      </div>
+      <div>
+        <button class="btn btn-primary" (click)="addMeals(recipe.id)">Add meals</button>
+        <button class="btn btn-primary ms-2" (click)="addTag(recipe.id)">Add tag</button>
+      </div>
     </div>
   </div>
 </div>
-  

@@ -9,7 +9,7 @@ body {
 .recipe-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin-top: 20px;
   padding: 0 20px;
 }
@@ -19,8 +19,9 @@ body {
   margin-bottom: 50px;
   width: 30vw;
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   box-sizing: border-box;
+  position: relative;
 }
 h1 {
   font-size: 24px;
@@ -61,4 +62,9 @@ p {
 .button:hover {
   background-color: #333;
   color: #fff;
+}
+.btn-close {
+  position: absolute;
+  top: 5%;
+  left: 90%;
 }

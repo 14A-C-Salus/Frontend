@@ -6,37 +6,35 @@ import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-add-ingredient',
   templateUrl: './add-ingredient.component.html',
-  styleUrls: ['./add-ingredient.component.css']
+  styleUrls: ['./add-ingredient.component.css'],
 })
 export class AddIngredientComponent {
-
-  data: CreateIngredient= {
-    name: "Example name",
-    kcal: 100,
-    protein: 15,
-    fat: 5,
-    carbohydrate: 10,
+  data: CreateIngredient = {
+    name: '',
+    kcal: 0,
+    protein: 0,
+    fat: 0,
+    carbohydrate: 0,
   };
 
-  constructor(private authService: AuthService,
-              private modalService: NgbModal) {
-    
+  constructor(
+    private authService: AuthService,
+    private modalService: NgbModal
+  ) {}
+  Close() {
+    this.modalService.dismissAll();
   }
-  Close(){
-    this.modalService.dismissAll()
-  }
-  SaveIngredient(){
+  SaveIngredient() {
     console.log(this.data);
-    
-    this.authService.createIngredient(this.data).subscribe({
-      next: res => {
-        this.modalService.dismissAll()
-      },
-      error: err => {
-        console.log(err);
-        
-      }
-    })
-  }
 
+    this.authService.createIngredient(this.data).subscribe({
+      next: (res) => {
+        this.modalService.dismissAll();
+        location.reload();
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
 }

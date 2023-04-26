@@ -1,6 +1,6 @@
 export class UserRegister {
-    username = '';
-    email = '';
-    password = '';
-    confirmPassword = '';
+  username = '';
+  email = '';
+  password = '';
+  confirmPassword = '';
 }

@@ -5,14 +5,14 @@
 }
 .background {
   background-color: #5c665c;
-  color: #FFFFFF;
+  color: #ffffff;
   padding: 20px;
   margin: 10px;
   width: 45%;
   min-width: 300px;
   height: 41vw;
 }
-.img{
+.img {
   margin: 10px;
   width: 96%;
   min-width: 200px;
@@ -25,14 +25,14 @@
   height: 41vw;
 }
 .right-img-top {
-  color: #FFFFFF;
+  color: #ffffff;
   margin: 10px;
   width: 119.5%;
   height: 18vw;
   opacity: 50%;
 }
 .right-img-bottom {
-  color: #FFFFFF;
+  color: #ffffff;
   margin: 10px;
   width: 97.5%;
   height: 18vw;
@@ -46,5 +46,4 @@
   padding: 5px;
   opacity: 70%;
   color: #5c665c;
-
 }

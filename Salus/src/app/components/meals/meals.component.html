@@ -8,15 +8,28 @@
       <th>Protein (g)</th>
       <th>Fat (g)</th>
       <th>Carbohydrates (g)</th>
+      <th>Törlés</th>
+
     </tr>
   </thead>
+  <tbody class="text-center">
+    <tr>
+      <td>Csipős Csirke</td>
+      <td>328</td>
+      <td>32</td>
+      <td>12</td>
+      <td>5</td>
+      <td><button class="btn btn-danger">Delete</button></td>
+    </tr>
+  </tbody>
   <tbody>
     <tr *ngFor="let food of foods">
-        <td>{{ food.id }}</td>
-        <td>{{ food.kcal }}</td>
-        <td>{{ food.protein }}</td>
-        <td>{{ food.fat }}</td>
-        <td>{{ food.carbohydrate }}</td>
-      </tr>
+      <td>Name</td>
+      <td>{{ food.kcal }}</td>
+      <td>{{ food.protein }}</td>
+      <td>{{ food.fat }}</td>
+      <td>{{ food.carbohydrate }}</td>
+      <td><button (click)="deleteMeal(food.id)" class="btn btn-danger">Delete</button></td>
+    </tr>
   </tbody>
 </table>

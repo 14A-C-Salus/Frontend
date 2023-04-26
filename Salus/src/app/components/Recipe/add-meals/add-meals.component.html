@@ -1,9 +1,9 @@
 <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()" class="meal-form">
-    <div class="form-group">
-        <h4>Mennyit ettél belöle? (g)</h4>
-      <input formControlName="portion" id="portion" type="number" [(ngModel)]="meals.portion" />
-    </div>
-    <div class="text-center">
-        <button class="btn btn-primary mt-4" type="submit">Save</button>
-    </div>
-  </form>
+  <div class="form-group">
+    <h4>How much did you eat? (g)</h4>
+    <input formControlName="portion" id="portion" type="number" [(ngModel)]="meals.portion" />
+  </div>
+  <div class="text-center">
+    <button class="btn btn-primary mt-4" type="submit">Save</button>
+  </div>
+</form>

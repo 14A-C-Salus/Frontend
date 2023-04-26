@@ -11,26 +11,30 @@ import { ModifyProfileComponent } from './components/UserProfile/modify-profile/
 import { RecipeComponent } from './components/Recipe/recipe.component';
 import { MealsComponent } from './components/meals/meals.component';
 import { AuthGuard } from './services/auth.guard';
-import { AdminComponent } from './components/admin/admin.component';
 import { AuthGuardAdmin } from './services/admin.guard';
 import { AboutUsComponent } from './components/about-us/about-us.component';
-
-
+import { AdminComponent } from './components/admin/admin.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent},
-  { path: 'Login', component: LoginComponent},
-  { path: 'Register', component: RegisterComponent},
-  { path: 'ResetPassword', component: ResetPasswordComponent},
-  { path: 'ForgotPassword', component: ForgotPasswordComponent},
-  { path: 'CreateProfile', component: CreateProfileComponent, canActivate: [AuthGuard] },
-  { path: 'ModifyProfile', component: ModifyProfileComponent, canActivate: [AuthGuard] },
-  { path: 'Recipe', component: RecipeComponent, canActivate: [AuthGuard]},
+  { path: '', component: HomeComponent },
+  { path: 'Login', component: LoginComponent },
+  { path: 'Register', component: RegisterComponent },
+  { path: 'ResetPassword', component: ResetPasswordComponent },
+  { path: 'ForgotPassword', component: ForgotPasswordComponent },
+  {
+    path: 'CreateProfile',
+    component: CreateProfileComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'ModifyProfile',
+    component: ModifyProfileComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: 'Recipe', component: RecipeComponent, canActivate: [AuthGuard] },
   { path: 'Meals', component: MealsComponent, canActivate: [AuthGuard] },
   { path: 'Admin', component: AdminComponent, canActivate: [AuthGuard] },
-  { path: 'AboutUs', component: AboutUsComponent},
-
-
+  { path: 'AboutUs', component: AboutUsComponent },
 ];
 
 @NgModule({

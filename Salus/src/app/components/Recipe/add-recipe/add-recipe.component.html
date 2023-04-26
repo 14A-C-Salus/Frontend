@@ -1,61 +1,61 @@
 <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title">Add Recipe</h5>
-      <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close" (click)="Close()"></button>
+  <div class="modal-header">
+    <h5 class="modal-title">Add Recipe</h5>
+    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close" (click)="Close()"></button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group mt-2">
+      <label>Name:</label>
+      <input type="text" class="form-control" [(ngModel)]="recipe.name">
     </div>
-    <div class="modal-body">
-      <div class="form-group">
-        <label>Name:</label>
-        <input type="text" class="form-control" [(ngModel)]="recipe.name">
-      </div>
-      <div class="form-group">
-        <label>Method:</label>
-        <select name="method" [(ngModel)]="recipe.method">
-          <option value="1">Fry</option>
-          <option value="2">asd</option>
-          <option value="3">asd</option>
-          <option value="4">asd</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Oil:</label>
-        <select name="method" [(ngModel)]="recipe.oilId">
-          <option *ngFor="let oil of oils" [value]="oil.id">{{oil.name}}</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Oil portion: (ml)</label>
-        <input type="text" class="form-control" [(ngModel)]="recipe.oilPortionMl">
-      </div>
-      <div class="form-group">
-        <label>Time: (minute)</label>
-        <input type="text" class="form-control" [(ngModel)]="recipe.timeInMinutes">
-      </div>
-      <label>
-        <input type="radio" name="showDescription"  [value]="false" [(ngModel)]="recipe.generateDescription" />
-        Show Description
-      </label>
-      <label>
-        <input type="radio" name="showDescription" class="ms-4" [value]="true" [(ngModel)]="recipe.generateDescription" />
-        Hide Description
-      </label>
-      <div class="form-group">
-        <label>Description:</label>
-        <input type="text" class="form-control" [(ngModel)]="recipe.description" [disabled]="recipe.generateDescription">
-      </div>
-      <div class="mt-2" *ngFor="let ingredient of ingredients">
-        <select [(ngModel)]="ingredient.name">
-          <option *ngFor="let d of data" [value]="d.id">{{d.name}}</option>
-        </select>
-        <input type="text" [(ngModel)]="ingredient.quantity" placeholder="Enter quantity">
-      </div>
-      <button class="btn btn-primary mt-2" (click)="addIngredient()">
-        Add ingredients
+    <div class="form-group mt-2">
+      <label>Method:</label>
+      <select name="method" [(ngModel)]="recipe.method">
+        <option value="1">Baking</option>
+        <option value="2">Frying</option>
+        <option value="3">Roasting</option>
+        <option value="4">Cooking</option>
+      </select>
+    </div>
+    <div class="form-group mt-2">
+      <label>Oil:</label>
+      <select name="method" [(ngModel)]="recipe.oilId">
+        <option *ngFor="let oil of oils" [value]="oil.id">{{oil.name}}</option>
+      </select>
+    </div>
+    <div class="form-group mt-2">
+      <label class="form-label">Oil portion: (ml)</label>
+      <input type="text" class="form-control" [(ngModel)]="recipe.oilPortionMl">
+    </div>
+    <div class="form-group mt-2">
+      <label>Time: (minute)</label>
+      <input type="text" class="form-control" [(ngModel)]="recipe.timeInMinutes">
+    </div>
+    <label>
+      <input type="radio" name="showDescription" [value]="false" [(ngModel)]="recipe.generateDescription" />
+      Show Description
+    </label>
+    <label>
+      <input type="radio" name="showDescription" class="ms-4" [value]="true" [(ngModel)]="recipe.generateDescription" />
+      Hide Description
+    </label>
+    <div class="form-group mt-2">
+      <label>Description:</label>
+      <input type="text" class="form-control" [(ngModel)]="recipe.description" [disabled]="recipe.generateDescription">
+    </div>
+    <div class="mt-2" *ngFor="let ingredient of ingredients">
+      <select [(ngModel)]="ingredient.name">
+        <option *ngFor="let d of data" [value]="d.id">{{d.name}}</option>
+      </select>
+      <input type="text" [(ngModel)]="ingredient.quantity" placeholder="Enter quantity">
+    </div>
+    <button class="btn btn-primary mt-2" (click)="addIngredient()">
+      Add ingredients
+    </button>
+    <div class="modal-foter text-center mt-4">
+      <button class="btn btn-primary" (click)="SaveIngredient()">
+        Save ingredients
       </button>
-      <div class="modal-foter text-center mt-4">
-        <button class="btn btn-primary" (click)="SaveIngredient()">
-          Save ingredients
-        </button>
-      </div>
-
     </div>
+
+  </div>

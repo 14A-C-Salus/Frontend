@@ -6,11 +6,10 @@ import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-add-recipe',
   templateUrl: './add-recipe.component.html',
-  styleUrls: ['./add-recipe.component.css']
+  styleUrls: ['./add-recipe.component.css'],
 })
 export class AddRecipeComponent implements OnInit {
-  
-  recipe: CreateRecipe={
+  recipe: CreateRecipe = {
     ingredientIds: [],
     ingredientPortionGramm: [],
     method: 0,
@@ -21,56 +20,56 @@ export class AddRecipeComponent implements OnInit {
     description: '',
     generateDescription: false,
   };
-  data: any[] = []
-  oils: any;
+  data: any[] = [];
+  oils: any[] = [];
 
-  constructor(private authService: AuthService,
-              private modalService: NgbModal,) {
-    
-  }
+  constructor(
+    private authService: AuthService,
+    private modalService: NgbModal
+  ) {}
   ngOnInit(): void {
     this.authService.getAllRecipe().subscribe({
-      next:res => {
-      this.data = res
-
+      next: (res) => {
+        this.data = res;
       },
-      error: err =>{
-      console.log(err);
-      }
-    })
-    this.authService.getAllOil().subscribe({
-      next:res => {
-        this.oils = res
-  
-        },
-        error: err =>{
+      error: (err) => {
         console.log(err);
-        }
-    })
+      },
+    });
+    this.authService.getAllOils().subscribe({
+      next: (res) => {
+        this.oils = res;
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
-  Close(){
-    this.modalService.dismissAll()
+  Close() {
+    this.modalService.dismissAll();
   }
-  SaveIngredient(){
-    this.recipe.ingredientIds = this.ingredients.map(ingredient => ingredient.name).filter(quantity => quantity !== null) as number[];
-    this.recipe.ingredientPortionGramm = this.ingredients.map(ingredient => ingredient.quantity).filter(quantity => quantity !== null) as number[];
+  SaveIngredient() {
+    this.recipe.ingredientIds = this.ingredients
+      .map((ingredient) => ingredient.name)
+      .filter((quantity) => quantity !== null) as number[];
+    this.recipe.ingredientPortionGramm = this.ingredients
+      .map((ingredient) => ingredient.quantity)
+      .filter((quantity) => quantity !== null) as number[];
     this.authService.createRecipe(this.recipe).subscribe({
-      next:res => {
-        this.modalService.dismissAll()
-  
-        },
-        error: err =>{
+      next: (res) => {
+        this.modalService.dismissAll();
+      },
+      error: (err) => {
         console.log(err);
-        }
-    })
-
+      },
+    });
   }
   ingredients: Ingredient[] = [];
 
   addIngredient() {
     this.ingredients.push({
       name: null,
-      quantity: null
+      quantity: null,
     });
   }
 }

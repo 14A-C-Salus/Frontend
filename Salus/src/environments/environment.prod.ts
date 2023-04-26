@@ -1,4 +1,4 @@
 export const environment = {
-    production: true,
-    APIUrl: "https://www.valami.com/api",
-}
+  production: true,
+  APIUrl: 'http://salushl-001-site1.dtempurl.com/api',
+};

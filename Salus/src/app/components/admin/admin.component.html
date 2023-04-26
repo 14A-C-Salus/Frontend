@@ -1,30 +1,60 @@
-<form>
-  <label for="name">Name:</label>
-  <input type="text" id="name" name="name" required>
+<div class="text-center">
 
-  <label for="description">Description:</label>
-  <input type="text" id="description" name="description" required>
-
-  <label for="minFat">Minimum Fat:</label>
-  <input type="number" id="minFat" name="minFat" required>
-
-  <label for="minCarbohydrate">Minimum Carbohydrate:</label>
-  <input type="number" id="minCarbohydrate" name="minCarbohydrate" required>
-
-  <label for="minProtein">Minimum Protein:</label>
-  <input type="number" id="minProtein" name="minProtein" required>
-
-  <label for="minKcal">Minimum Kcal:</label>
-  <input type="number" id="minKcal" name="minKcal" required>
-
-  <label for="minDl">Minimum DL:</label>
-  <input type="number" id="minDl" name="minDl" required>
-
-  <label for="maxFat">Maximum Fat:</label>
-  <input type="number" id="maxFat" name="maxFat" required>
-
-  <label for="maxCarbohydrate">Maximum Carbohydrate:</label>
-  <input type="number" id="maxCarbohydrate" name="maxCarbohydrate" required>
-
-  <label for="maxProtein">Maximum Protein:</label>
-  <input type="number" id="maxProtein" name="maxProtein" required>
+  <h1>Admin page</h1>
+</div>
+<div class="container mt-5">
+  <div class="box">
+    <div class="text-center">
+      <header>
+        <h2>Diets</h2>
+      </header>
+    </div>
+    <button class="btn btn-primary" (click)="addDiet()">
+      +
+    </button>
+    <div class="mt-2">
+      <label for="">Example name Diet</label>
+      <button class="btn btn-danger">Delete</button>
+    </div>
+    <div class="mt-4" *ngFor="let diet of diets">
+      <label for="">{{diet.name}}</label>
+      <button class="btn btn-danger" (click)="deleteDiet(diet.id)">Delete</button>
+    </div>
+  </div>
+  <div class="box">
+    <div class="text-center">
+      <header>
+        <h2>Oils</h2>
+      </header>
+    </div>
+    <button class="btn btn-primary" (click)="addOil()">
+      +
+    </button>
+    <div class="mt-2">
+      <label for="">Example name</label>
+      <button class="btn btn-danger">Delete</button>
+    </div>
+    <div class="mt-4" *ngFor="let oil of oils">
+      <label for="">{{oil.name}}</label>
+      <button class="btn btn-danger" (click)="deleteOil(oil.id)">Delete</button>
+    </div>
+  </div>
+  <div class="box">
+    <div class="text-center">
+      <header>
+        <h2>Tags</h2>
+      </header>
+    </div>
+    <button class="btn btn-primary" (click)="addTag()">
+      +
+    </button>
+    <div class="mt-2">
+      <label for="">Example name</label>
+      <button class="btn btn-danger">Delete</button>
+    </div>
+    <div class="mt-4" *ngFor="let tag of tags">
+      <label for="">{{tag.name}}</label>
+      <button class="btn btn-danger" (click)="deleteDiet(tag.id)">Delete</button>
+    </div>
+  </div>
+</div>

@@ -18,11 +18,13 @@ import { MealsComponent } from './components/meals/meals.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { AddIngredientComponent } from './components/Recipe/add-ingredient/add-ingredient.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FilterPipe } from './services/filter.pipe';
 import { AddRecipeComponent } from './components/Recipe/add-recipe/add-recipe.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AddMealsComponent } from './components/Recipe/add-meals/add-meals.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
+import { AddDietComponent } from './components/admin/add-diet/add-diet.component';
+import { AddOilComponent } from './components/admin/add-oil/add-oil.component';
+import { AddTagComponent } from './components/admin/add-tag/add-tag.component';
 
 @NgModule({
   declarations: [
@@ -39,10 +41,12 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
     MealsComponent,
     AdminComponent,
     AddIngredientComponent,
-    FilterPipe,
     AddRecipeComponent,
     AddMealsComponent,
     AboutUsComponent,
+    AddDietComponent,
+    AddOilComponent,
+    AddTagComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,13 +54,15 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: AuthInterceptor,
-    multi: true
-  }],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

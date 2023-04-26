@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddIngredientComponent } from './add-ingredient/add-ingredient.component';
 import { AuthService } from 'src/app/services/auth.service';
@@ -8,37 +8,55 @@ import { AddMealsComponent } from './add-meals/add-meals.component';
 @Component({
   selector: 'app-recipe',
   templateUrl: './recipe.component.html',
-  styleUrls: ['./recipe.component.css']
+  styleUrls: ['./recipe.component.css'],
 })
 export class RecipeComponent implements OnInit {
-
-  openModalIngredient() {
+  addIngredient() {
     this.modalService.open(AddIngredientComponent);
   }
-  openModalRecipe() {
+  addRecipe() {
     this.modalService.open(AddRecipeComponent);
   }
-  constructor(private modalService: NgbModal,
-    private authService: AuthService ) { }
+  constructor(
+    private modalService: NgbModal,
+    private authService: AuthService
+  ) {}
 
-  recipes: any[] = []
+  recipes: any[] = [];
 
-ngOnInit() {
+  ngOnInit() {
     this.authService.getAllRecipe().subscribe({
-      next:res => {
-      this.recipes = res
-
+      next: (res) => {
+        this.recipes = res;
       },
-      error: err =>{
-      console.log(err);
-      }
-    })
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
-  addMeals(id: number){
-    const modalRef=this.modalService.open(AddMealsComponent);
+  addMeals(id: number) {
+    const modalRef = this.modalService.open(AddMealsComponent);
+    modalRef.componentInstance.meals = {
+      isLiquid: false,
+      recipeId: id,
+      portion: 0,
+    };
+  }
+  addTag(id: number) {
+    const modalRef = this.modalService.open(AddMealsComponent);
     modalRef.componentInstance.meals = {
       recipeId: id,
-      portion: 0
+      tagIds: 0,
     };
+  }
+  deleteRecipe(id: any) {
+    this.authService.deleteRecipe(id).subscribe({
+      next: (res) => {
+        location.reload();
+      },
+      error: (err) => {
+        alert('You dont have authorities for this');
+      },
+    });
   }
 }
