@@ -23,15 +23,19 @@ export class ModifyProfileComponent {
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
-    const decodedToken = jwt_decode(this.authToken!) as DecodedToken;
-    this.authService.getUserProfile(decodedToken.id).subscribe({
-      next: (userProfile) => {
-        this.modifiedProfile = userProfile;
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
+
+    if(this.authToken){
+      const decodedToken = jwt_decode(this.authToken!) as DecodedToken;
+      this.authService.getUserProfile(decodedToken.id).subscribe({
+        next: (userProfile) => {
+          this.modifiedProfile = userProfile;
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
+    }
+
   }
 
   modifyProfile(): void {

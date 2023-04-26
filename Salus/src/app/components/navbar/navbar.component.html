@@ -14,21 +14,23 @@
     </button>
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item" *ngIf="!authToken">
-          <a routerLink="/Login" class="nav-link">Login</a>
-        </li>
-        <li class="nav-item" *ngIf="!authToken">
-          <a routerLink="/Register" class="nav-link">Register</a>
-        </li>
-        <li class="nav-item" *ngIf="authToken" class="dropdown">
-          <div class="dropdown" style="float:right;">
-            <button class="dropbtn">{{userName}}</button>
-            <div class="dropdown-content">
-              <a routerLink="/ModifyProfile" class="dropdown-item">Modify Profile</a>
-              <a class="dropdown-item" (click)="logout()">Log Out</a>
+          <li class="nav-item" >
+            <a routerLink="/Login" class="nav-link" *ngIf="!authToken">Login</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/Register" class="nav-link" *ngIf="!authToken">Register</a>
+          </li>
+        <div *ngIf="authToken">
+          <li class="nav-item" class="dropdown">
+            <div class="dropdown" style="float:right;">
+              <button class="dropbtn">{{userName}}</button>
+              <div class="dropdown-content">
+                <a routerLink="/ModifyProfile" class="dropdown-item">Modify Profile</a>
+                <a class="dropdown-item" (click)="logout()">Log Out</a>
+              </div>
             </div>
-          </div>
-        </li>
+          </li>
+        </div>
       </ul>
     </div>
   </div>

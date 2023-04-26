@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { subscribeOn } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -10,16 +9,17 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./add-tag.component.css'],
 })
 export class AddTagComponent implements OnInit {
-  recipeForm: FormGroup;
 
+ 
   @Input() data: any;
 
   constructor(
     private authService: AuthService,
-    private modalService: NgbModal
-  ) {}
+    private modalService: NgbModal,
 
-  tags: any[] = [];
+  ) {
+  }
+  tags: any[] =[];
 
   ngOnInit(): void {
     this.authService.getAllTags().subscribe({
@@ -31,19 +31,20 @@ export class AddTagComponent implements OnInit {
       },
     });
   }
+
   Close() {
     this.modalService.dismissAll();
   }
 
   onSubmit() {
-    this.authService.addTagsToRecipe(this.data).subscribe({
-      next: (res) => {
-        this.modalService.dismissAll();
-        location.reload();
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
+      this.authService.addTagsToRecipe(this.data).subscribe({
+        next: (res) => {
+          this.modalService.dismissAll();
+          location.reload();
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
   }
 }

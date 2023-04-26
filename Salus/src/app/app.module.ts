@@ -19,12 +19,12 @@ import { AdminComponent } from './components/admin/admin.component';
 import { AddIngredientComponent } from './components/Recipe/add-ingredient/add-ingredient.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AddRecipeComponent } from './components/Recipe/add-recipe/add-recipe.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import { AddMealsComponent } from './components/Recipe/add-meals/add-meals.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { AddDietComponent } from './components/admin/add-diet/add-diet.component';
 import { AddOilComponent } from './components/admin/add-oil/add-oil.component';
 import { AddTagComponent } from './components/admin/add-tag/add-tag.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [

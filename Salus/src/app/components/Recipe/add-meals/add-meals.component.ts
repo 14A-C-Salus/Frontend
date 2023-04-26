@@ -32,7 +32,6 @@ export class AddMealsComponent {
     this.modalService.dismissAll();
   }
   onSubmit() {
-    console.log(this.meals);
 
     this.authService.addRecipeToLast24H(this.meals).subscribe({
       next: (res) => {

@@ -15,9 +15,9 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {
-    const decodedToken = jwt_decode(this.authToken!) as DecodedToken;
-
+    
     if (this.authToken) {
+      const decodedToken = jwt_decode(this.authToken!) as DecodedToken;
       this.authService.getUserProfile(decodedToken.id).subscribe({
         next: (res) => {
           return;

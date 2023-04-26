@@ -13,7 +13,6 @@ import { Oil } from '../models/oil';
 import { CreateIngredient } from '../models/recipe.ingredient';
 import { UpdateRecipe } from '../models/recipe.update';
 import { CreateRecipe } from '../models/recipe.create';
-import { AddTag } from '../models/recipe.tag';
 import { ResetPassword } from '../models/auth.reset.password';
 import { WriteComment } from '../models/socialmedia.write.comment';
 import { CreateTag } from '../models/tag.create';
@@ -312,9 +311,13 @@ export class AuthService {
     else return false;
   }
   isAdmin() {
-    const authToken = localStorage.getItem('authToken');
-    const decodedToken = jwt_decode(authToken!) as DecodedToken;
-    if (decodedToken.role == 'admin') return true;
-    else return false;
+    if(this.isLoggedIn()){
+      const authToken = localStorage.getItem('authToken');
+      const decodedToken = jwt_decode(authToken!) as DecodedToken;
+      if (decodedToken.role == 'admin') return true;
+      else return false;
+    }
+    else return
+
   }
 }

@@ -12,13 +12,12 @@ import { DecodedToken } from 'src/app/models/decoded.token';
 export class NavbarComponent implements OnInit {
   userName: string;
   authToken = localStorage.getItem('authToken');
-
+  
   constructor(private router: Router, private authService: AuthService) {}
-
+  
   ngOnInit() {
-    const decodedToken = jwt_decode(this.authToken!) as DecodedToken;
-
     if (this.authToken) {
+      const decodedToken = jwt_decode(this.authToken!) as DecodedToken;
       this.authService.getAuth(decodedToken.id).subscribe({
         next: (res: any) => {
           this.userName = res.username;
@@ -31,9 +30,8 @@ export class NavbarComponent implements OnInit {
   }
 
   logout(): void {
-    this.authToken = null;
     localStorage.removeItem('authToken');
-    this.router.navigate(['/']);
+    location.reload();
   }
   isAdmin() {
     this.authService.isAdmin();

@@ -1,6 +1,6 @@
 <h1>Today's Food Diary</h1>
 
-<table>
+<table class="mt-5">
   <thead>
     <tr>
       <th>Food</th>
@@ -24,7 +24,7 @@
   </tbody>
   <tbody>
     <tr *ngFor="let food of foods">
-      <td>Name</td>
+      <td>{{ food.name }}</td>
       <td>{{ food.kcal }}</td>
       <td>{{ food.protein }}</td>
       <td>{{ food.fat }}</td>
