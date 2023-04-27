@@ -1,3 +1,0 @@
-
-# Salus - Healthy lifestyle
-
