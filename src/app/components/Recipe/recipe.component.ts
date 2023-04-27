@@ -25,16 +25,22 @@ export class RecipeComponent implements OnInit {
 
   recipes: any[] = [];
 
+  
+
   ngOnInit() {
     this.authService.getAllRecipe().subscribe({
       next: (res) => {
         this.recipes = res;
-        console.log(this.recipes);
       },
       error: (err) => {
         console.log(err);
       },
     });
+
+  }
+  asd(asd : any){
+      console.log(asd);
+      
   }
   addMeals(id: number) {
     const modalRef = this.modalService.open(AddMealsComponent);

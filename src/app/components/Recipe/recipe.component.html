@@ -28,7 +28,7 @@
         <li>{{recipe.carbohydrate}}</li>
       </ul>
       <div class="d-flex">
-        <button *ngFor="let tag of recipe.tags" disabled class="btn btn-success mt-2 ms-2">{{tag.name}}</button>
+        <button *ngFor="let t of recipe.tags" disabled class="btn btn-success mt-2 ms-2">{{t.tag.name}}</button>
       </div>
       <div class="mt-2">
         <button class="btn btn-primary" (click)="addMeals(recipe.id)">Add meals</button>

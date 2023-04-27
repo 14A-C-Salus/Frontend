@@ -46,6 +46,12 @@ export class AuthService {
       responseType: 'text',
     });
   }
+  Verify(token: any): Observable<any> {
+    return this.http.patch(
+      `${environment.APIUrl}/Auth/verify?token=${token}`,
+      { responseType: 'text' }
+    );
+  }
   forgotPassword(email: string): Observable<any> {
     return this.http.patch(
       `${environment.APIUrl}/Auth/forgot-password?email=${email}`,

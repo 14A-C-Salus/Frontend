@@ -14,6 +14,7 @@ import { AuthGuardAdmin } from './services/admin.guard';
 import { AboutUsComponent } from './components/AboutUs/about-us.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { MealsComponent } from './components/meals/meals.component';
+import { VerifyComponent } from './components/Auth/verify/verify.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'Register', component: RegisterComponent },
   { path: 'ResetPassword', component: ResetPasswordComponent },
   { path: 'ForgotPassword', component: ForgotPasswordComponent },
+  { path: 'Verify', component: VerifyComponent },
   {
     path: 'CreateProfile',
     component: CreateProfileComponent,

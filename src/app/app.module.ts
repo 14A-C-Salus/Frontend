@@ -26,6 +26,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { AddDietComponent } from './components/admin/add-diet/add-diet.component';
 import { AddOilComponent } from './components/admin/add-oil/add-oil.component';
 import { AddTagComponent } from './components/Recipe/add-tag/add-tag.component';
+import { VerifyComponent } from './components/Auth/verify/verify.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { AddTagComponent } from './components/Recipe/add-tag/add-tag.component';
     AddDietComponent,
     AddOilComponent,
     AddTagComponent,
+    VerifyComponent,
   ],
   imports: [
     BrowserModule,

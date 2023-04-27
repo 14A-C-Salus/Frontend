@@ -55,7 +55,6 @@ export class ResetPasswordComponent {
     if (this.resetPasswordForm.valid) {
       this.resetPasswordData.token =
         this.route.snapshot.queryParamMap.get('token');
-      console.log(this.resetPasswordData);
       this.authService.resetPassword(this.resetPasswordData).subscribe({
         next: (res) => {
           alert('Succesfull reset password');

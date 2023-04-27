@@ -25,8 +25,6 @@ export class AddIngredientComponent {
     this.modalService.dismissAll();
   }
   SaveIngredient() {
-    console.log(this.data);
-
     this.authService.createIngredient(this.data).subscribe({
       next: (res) => {
         this.modalService.dismissAll();
