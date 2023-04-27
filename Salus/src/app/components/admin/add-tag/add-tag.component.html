@@ -1,1 +1,36 @@
-<p>add-tag works!</p>
+
+<div class="modal-header">
+    <h4 class="modal-title">Create New Item</h4>
+    <button type="button" class="close" aria-label="Close" (click)="Cancel()">
+    <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form>
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" [(ngModel)]="newItem.name">
+    </div>
+    <div class="form-group">
+        <label for="description">Description:</label>
+        <input type="text" class="form-control" id="description" [(ngModel)]="newItem.description">
+    </div>
+    <div class="form-group">
+        <label for="property">Property:</label>
+        <input type="number" class="form-control" id="property" [(ngModel)]="newItem.property">
+    </div>
+    <div class="form-group">
+        <label for="maxValue">Max Value:</label>
+        <input type="number" class="form-control" id="maxValue" [(ngModel)]="newItem.maxValue">
+    </div>
+    <div class="form-group">
+        <label for="minValue">Min Value:</label>
+        <input type="number" class="form-control" id="minValue" [(ngModel)]="newItem.minValue">
+    </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="Cancel()">Cancel</button>
+    <button type="button" class="btn btn-primary" (click)="createTag()">Create</button>
+</div>
+  

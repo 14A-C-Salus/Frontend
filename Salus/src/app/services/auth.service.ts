@@ -127,11 +127,8 @@ export class AuthService {
 
   //Oil
 
-  createOil(oil: Oil): Observable<any> {
+  createOil(oil: any): Observable<any> {
     return this.http.put(`${environment.APIUrl}/Oil/create`, oil);
-  }
-  updateOil(oil: Oil): Observable<any> {
-    return this.http.patch(`${environment.APIUrl}/Oil/create${oil.id}`, oil);
   }
   deleteOil(id: number): Observable<any> {
     return this.http.delete(`${environment.APIUrl}/Oil/delete?id=${id}`);
@@ -256,7 +253,9 @@ export class AuthService {
     );
   }
   getAllTags(): Observable<any[]> {
-    return this.http.get<any[]>(`http://salushl-001-site1.dtempurl.com/api/Tag/get-all`);
+    return this.http.get<any[]>(
+      `http://salushl-001-site1.dtempurl.com/api/Tag/get-all`
+    );
   }
 
   //UserProfile
@@ -311,13 +310,15 @@ export class AuthService {
     else return false;
   }
   isAdmin() {
-    if(this.isLoggedIn()){
+    if (this.isLoggedIn()) {
       const authToken = localStorage.getItem('authToken');
-      const decodedToken = jwt_decode(authToken!) as DecodedToken;
-      if (decodedToken.role == 'admin') return true;
+      const decodedToken = jwt_decode(authToken!) as any;
+      const role =
+        decodedToken[
+          'http://schemas.microsoft.com/ws/2008/06/identity/claims/role'
+        ];
+      if (role == 'Admin') return true;
       else return false;
-    }
-    else return
-
+    } else return;
   }
 }

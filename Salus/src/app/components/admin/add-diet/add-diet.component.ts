@@ -31,9 +31,7 @@ export class AddDietComponent {
   Close() {
     this.modalService.dismissAll();
   }
-  SaveIngredient() {
-    console.log(this.data);
-
+  saveDiet() {
     this.authService.createDiet(this.data).subscribe({
       next: (res) => {
         this.modalService.dismissAll();

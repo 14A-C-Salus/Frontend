@@ -14,17 +14,17 @@ import { ForgotPasswordComponent } from './components/Auth/forgot-password/forgo
 import { CreateProfileComponent } from './components/UserProfile/create-profile/create-profile.component';
 import { ModifyProfileComponent } from './components/UserProfile/modify-profile/modify-profile.component';
 import { RecipeComponent } from './components/Recipe/recipe.component';
-import { MealsComponent } from './components/Meals/meals.component';
-import { AdminComponent } from './components/Admin/admin.component';
+import { MealsComponent } from './components/meals/meals.component';
+import { AdminComponent } from './components/admin/admin.component';
 import { AddIngredientComponent } from './components/Recipe/add-ingredient/add-ingredient.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AddRecipeComponent } from './components/Recipe/add-recipe/add-recipe.component';
 import { AddMealsComponent } from './components/Recipe/add-meals/add-meals.component';
 import { AboutUsComponent } from './components/AboutUs/about-us.component';
 import { CommonModule } from '@angular/common';
-import { NavbarComponent } from './components/Navbar/navbar.component';
-import { AddDietComponent } from './components/Admin/add-diet/add-diet.component';
-import { AddOilComponent } from './components/Admin/add-oil/add-oil.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { AddDietComponent } from './components/admin/add-diet/add-diet.component';
+import { AddOilComponent } from './components/admin/add-oil/add-oil.component';
 import { AddTagComponent } from './components/Recipe/add-tag/add-tag.component';
 
 @NgModule({

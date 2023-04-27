@@ -29,6 +29,7 @@ export class RecipeComponent implements OnInit {
     this.authService.getAllRecipe().subscribe({
       next: (res) => {
         this.recipes = res;
+        console.log(this.recipes);
       },
       error: (err) => {
         console.log(err);

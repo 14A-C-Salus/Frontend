@@ -27,13 +27,10 @@
       <ul class="ingredients">
         <li>{{recipe.carbohydrate}}</li>
       </ul>
-      <div>
-        <button class="btn btn-succes">Fat</button>
+      <div class="d-flex">
+        <button *ngFor="let tag of recipe.tags" disabled class="btn btn-success mt-2 ms-2">{{tag.name}}</button>
       </div>
-      <div *ngFor="let tag of recipe.tags">
-        <button class="btn btn-succes">{{tag.name}}</button>
-      </div>
-      <div>
+      <div class="mt-2">
         <button class="btn btn-primary" (click)="addMeals(recipe.id)">Add meals</button>
         <button class="btn btn-primary ms-2" (click)="addTag(recipe.id)">Add tag</button>
       </div>

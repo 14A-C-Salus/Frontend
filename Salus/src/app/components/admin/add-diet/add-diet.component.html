@@ -5,16 +5,25 @@
     </button>
 </div>
 <div class="modal-body">
-    <p>{{ data.description }}</p>
+    Name:
+    <input type="text" name="" id="" [(ngModel)]="data.name">
     <ul>
-        <li>Fat: <input type="text" name="" id="">g - {{ data.maxFat }}g</li>
-        <li>Carbohydrate: {{ data.minCarbohydrate }}g - {{ data.maxCarbohydrate }}g</li>
-        <li>Protein: {{ data.minProtein }}g - {{ data.maxProtein }}g</li>
-        <li>Kcal: {{ data.minKcal }} - {{ data.maxKcal }}</li>
-        <li>Dl: {{ data.minDl }} - {{ data.maxDl }}</li>
+        <li>Fat: <p><input type="number" name="" id="" [(ngModel)]="data.minFat"> - <input type="number" name="" id="" [(ngModel)]="data.maxFat">g</p>
+        </li>
+        <li>Carbohydrate: <p><input type="number" name="" id="" [(ngModel)]="data.minCarbohydrate"> - <input type="number" name="" id="" [(ngModel)]="data.maxCarbohydrate">g</p>
+        </li>
+        <li>Protein: <p><input type="number" name="" id="" [(ngModel)]="data.minProtein"> - <input type="number" name="" id="" [(ngModel)]="data.maxProtein">g</p>
+        </li>
+        <li>Kcal: <p><input type="number" name="" id="" [(ngModel)]="data.minKcal"> - <input type="number" name="" id="" [(ngModel)]="data.maxKcal"></p>
+        </li>
+        <li>Dl: <p><input type="number" name="" id="" [(ngModel)]="data.minDl"> - <input type="number" name="" id="" [(ngModel)]="data.maxDl"></p>
+        </li>
+        <li>Description: <p><input type="text" [(ngModel)]="data.description"></p>
+        </li>
     </ul>
 </div>
 
-<div class="modal-footer">
+<div class="modal-footer text-center">
+    <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="saveDiet()">Save</button>
     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 </div>
