@@ -238,14 +238,8 @@ export class AuthService {
 
   //Tags
 
-  createTag(tagCreate: CreateTag): Observable<any> {
+  createTag(tagCreate: any): Observable<any> {
     return this.http.put<any>(`${environment.APIUrl}/Tag/create`, tagCreate);
-  }
-  updateTag(tagUpdateRequest: UpdateTag): Observable<any> {
-    return this.http.patch(
-      `${environment.APIUrl}/Tag/update`,
-      tagUpdateRequest
-    );
   }
   deleteTag(tagId: number): Observable<void> {
     return this.http.delete<void>(
@@ -254,7 +248,7 @@ export class AuthService {
   }
   getAllTags(): Observable<any[]> {
     return this.http.get<any[]>(
-      `http://salushl-001-site1.dtempurl.com/api/Tag/get-all`
+      `${environment.APIUrl}/Tag/get-all`
     );
   }
 

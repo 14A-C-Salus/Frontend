@@ -54,7 +54,7 @@
     </div>
     <div class="mt-4" *ngFor="let tag of tags">
       <label for="">{{tag.name}}</label>
-      <button class="btn btn-danger" (click)="deleteDiet(tag.id)">Delete</button>
+      <button class="btn btn-danger" (click)="deleteTag(tag.id)">Delete</button>
     </div>
   </div>
 </div>
