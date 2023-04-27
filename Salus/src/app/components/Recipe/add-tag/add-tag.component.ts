@@ -9,22 +9,18 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./add-tag.component.css'],
 })
 export class AddTagComponent implements OnInit {
-
- 
   @Input() data: any;
-
   constructor(
     private authService: AuthService,
-    private modalService: NgbModal,
-
-  ) {
-  }
-  tags: any[] =[];
+    private modalService: NgbModal
+  ) {}
+  tags: any[] = [];
 
   ngOnInit(): void {
     this.authService.getAllTags().subscribe({
       next: (res) => {
         this.tags = res;
+        console.log(this.tags);
       },
       error: (err) => {
         console.log(err);
@@ -35,16 +31,16 @@ export class AddTagComponent implements OnInit {
   Close() {
     this.modalService.dismissAll();
   }
-
-  onSubmit() {
-      this.authService.addTagsToRecipe(this.data).subscribe({
-        next: (res) => {
-          this.modalService.dismissAll();
-          location.reload();
-        },
-        error: (err) => {
-          console.log(err);
-        },
-      });
+  saveTag() {
+    this.data.tagIds = JSON.parse('[' + this.data.tagIds + ']');
+    this.authService.addTagsToRecipe(this.data).subscribe({
+      next: (res) => {
+        this.modalService.dismissAll();
+        location.reload();
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
 }

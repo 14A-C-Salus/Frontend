@@ -20,11 +20,12 @@ import { AddIngredientComponent } from './components/Recipe/add-ingredient/add-i
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AddRecipeComponent } from './components/Recipe/add-recipe/add-recipe.component';
 import { AddMealsComponent } from './components/Recipe/add-meals/add-meals.component';
-import { AboutUsComponent } from './components/about-us/about-us.component';
+import { AboutUsComponent } from './components/AboutUs/about-us.component';
+import { CommonModule } from '@angular/common';
+import { NavbarComponent } from './components/navbar/navbar.component';
 import { AddDietComponent } from './components/admin/add-diet/add-diet.component';
 import { AddOilComponent } from './components/admin/add-oil/add-oil.component';
-import { AddTagComponent } from './components/admin/add-tag/add-tag.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
+import { AddTagComponent } from './components/Recipe/add-tag/add-tag.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
+    CommonModule,
   ],
   providers: [
     {

@@ -1,0 +1,15 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title">Add Tag</h5>
+    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close" (click)="Close()"></button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group mt-2">
+      <select name="method" [(ngModel)]="data.tagIds">
+        <option *ngFor="let tag of tags" [value]="tag.id">{{tag.name}}</option>
+      </select>
+    </div>
+    <button class="btn btn-primary" (click)="saveTag()">
+      Save
+    </button>
+  </div>

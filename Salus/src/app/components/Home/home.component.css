@@ -17,7 +17,7 @@
   width: 96%;
   min-width: 200px;
   height: 38vw;
-  opacity: 50%;
+  opacity: 90%;
 }
 .right {
   display: flex;
@@ -27,16 +27,16 @@
 .right-img-top {
   color: #ffffff;
   margin: 10px;
-  width: 119.5%;
+  width: 107%;
   height: 18vw;
-  opacity: 50%;
+  opacity: 90%;
 }
 .right-img-bottom {
   color: #ffffff;
   margin: 10px;
   width: 97.5%;
   height: 18vw;
-  opacity: 50%;
+  opacity: 90%;
 }
 .link-text {
   position: absolute;

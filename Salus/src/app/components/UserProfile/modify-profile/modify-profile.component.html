@@ -16,13 +16,6 @@
           <span *ngIf="height.errors?.['required']">Height is required.</span>
         </div>
       </div>
-      <div class="form-group">
-        <label for="birthDate" class="form-label">Birth Date:</label>
-        <input type="date" class="form-control" id="birthDate" [(ngModel)]="modifiedProfile.birthDate" name="birthDate" required #birthDate="ngModel">
-        <div class="invalid-feedback" *ngIf="birthDate.invalid && (birthDate.dirty || birthDate.touched)">
-          <span *ngIf="birthDate.errors?.['required']">Birth Date is required.</span>
-        </div>
-      </div>
     </div>
     <div class="col-md-6">
       <div class="form-group">
@@ -43,6 +36,11 @@
           <span *ngIf="goalWeight.errors?.['required']">Goal Weight is required.</span>
         </div>
       </div>
+    </div>
+    <div class="text-center mt-4">
+      <button class="btn btn-primary"(click)="modifyProfile()">
+        Modify profile
+      </button>
     </div>
   </form>
 </div>

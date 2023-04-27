@@ -11,11 +11,15 @@
             <form>
               <div class="mb-3">
                 <label for="email" class="form-label">Email address:</label>
-                <input type="email" class="form-control" id="email" [(ngModel)]="userLogin.email" name="email" placeholder="Enter email">
+                <input type="email" class="form-control" id="email" [(ngModel)]="userLogin.email" name="email" placeholder="Email">
+                <p>Admin: vbazsi171@gmail.com</p>
+                <p>User: vbazsi17@gmail.com</p>
               </div>
               <div class="mb-3">
                 <label for="password" class="form-label">Password:</label>
                 <input type="password" class="form-control" id="password" [(ngModel)]="userLogin.password" name="password" placeholder="Password">
+                <p>Pwd admin: vbazsi171</p>
+                <p>Pwd user: vbazsi17</p>
               </div>
               <div *ngIf="errorMessageVerify" class="alert alert-danger text-center mt-2" role="alert">
                 {{ errorMessageVerify }}

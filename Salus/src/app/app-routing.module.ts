@@ -9,11 +9,11 @@ import { ResetPasswordComponent } from './components/Auth/reset-password/reset-p
 import { CreateProfileComponent } from './components/UserProfile/create-profile/create-profile.component';
 import { ModifyProfileComponent } from './components/UserProfile/modify-profile/modify-profile.component';
 import { RecipeComponent } from './components/Recipe/recipe.component';
-import { MealsComponent } from './components/meals/meals.component';
 import { AuthGuard } from './services/auth.guard';
 import { AuthGuardAdmin } from './services/admin.guard';
-import { AboutUsComponent } from './components/about-us/about-us.component';
+import { AboutUsComponent } from './components/AboutUs/about-us.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { MealsComponent } from './components/meals/meals.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -33,7 +33,7 @@ const routes: Routes = [
   },
   { path: 'Recipe', component: RecipeComponent, canActivate: [AuthGuard] },
   { path: 'Meals', component: MealsComponent, canActivate: [AuthGuard] },
-  { path: 'Admin', component: AdminComponent, canActivate: [AuthGuard] },
+  { path: 'Admin', component: AdminComponent, canActivate: [AuthGuardAdmin] },
   { path: 'AboutUs', component: AboutUsComponent },
 ];
 

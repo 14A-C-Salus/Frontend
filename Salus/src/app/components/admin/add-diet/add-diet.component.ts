@@ -10,8 +10,8 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class AddDietComponent {
   data: Diet = {
-    name: "string",
-    description: "string",
+    name: "",
+    description: "",
     minFat: 0,
     minCarbohydrate: 0,
     minProtein: 0,
@@ -31,9 +31,7 @@ export class AddDietComponent {
   Close() {
     this.modalService.dismissAll();
   }
-  SaveIngredient() {
-    console.log(this.data);
-
+  saveDiet() {
     this.authService.createDiet(this.data).subscribe({
       next: (res) => {
         this.modalService.dismissAll();
