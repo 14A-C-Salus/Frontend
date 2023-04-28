@@ -58,6 +58,7 @@ export class AddRecipeComponent implements OnInit {
     this.authService.createRecipe(this.recipe).subscribe({
       next: (res) => {
         this.modalService.dismissAll();
+        location.reload();
       },
       error: (err) => {
         console.log(err);

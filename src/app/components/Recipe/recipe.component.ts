@@ -38,10 +38,6 @@ export class RecipeComponent implements OnInit {
     });
 
   }
-  asd(asd : any){
-      console.log(asd);
-      
-  }
   addMeals(id: number) {
     const modalRef = this.modalService.open(AddMealsComponent);
     modalRef.componentInstance.meals = {
